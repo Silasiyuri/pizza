@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basilico Pizzéria | Tradicionális Pizzáink</title>
-    <meta name="description" content="Kövön sütött, kézzel nyújtott tradicionális olasz és New York-style pizzák Budapest szívében. Rendeljen online!">
+    <meta name="description" content="Kövön sütött, kézzel nyújtott tradicionális olasz pizzák Budapest szívében. Rendeljen online!">
     <style>
         /* 🎨 FONDO VERDE Y ESTILOS BASE */
         body {
@@ -12,98 +12,155 @@
             font-family: 'Arial', sans-serif;
             background-color: #2E7D32; color: #ffffff;
         }
-        /* ☰ BARRA DE NAVEGACIÓN MÓVIL (1B5E20) */
+
+        /* ☰ BARRA DE NAVEGACIÓN EN LÍNEA PERFECTA */
         .navbar {
             background-color: #1B5E20;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 20px; position: relative;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 15px 20px;
+            position: relative;
+            box-sizing: border-box;
+            width: 100%;
         }
-        .logo a { color: white; text-decoration: none; font-weight: bold; font-size: 24px; }
-        .nav-menu { list-style: none; margin: 0; padding: 0; display: flex; }
-        .nav-menu li a { display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; }
+
+        /* 🍕 LOGO FIJADO A LA IZQUIERDA */
+        .logo { margin-right: auto !important; padding: 0; }
+        .logo a { color: white; text-decoration: none; font-weight: bold; font-size: 24px; white-space: nowrap; }
+
+        /* 📋 MENÚ SUPERIOR EN HILERA HORIZONTAL */
+        .nav-menu {
+            list-style: none; margin: 0; padding: 0; 
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+        }
+        .nav-menu li a { display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; white-space: nowrap; }
         .icon-menu { display: none; color: white; font-size: 28px; text-decoration: none; }
         
-        /* 🎯 SECCIÓN PRINCIPAL (HERO) ESTILO BASILICO */
+        /* 🎯 HERO SECCIÓN */
         .hero {
             text-align: center; padding: 80px 20px;
             background: linear-gradient(rgba(27,94,32,0.85), rgba(46,125,50,0.85));
         }
         .hero h1 { font-size: 45px; margin: 0 0 10px 0; text-transform: uppercase; }
         .hero h2 { font-size: 22px; color: #A5D6A7; margin: 0 0 30px 0; }
-        .btn-menu {
-            display: inline-block; background-color: #ff9800; color: white;
-            padding: 15px 35px; font-size: 18px; font-weight: bold;
-            text-decoration: none; border-radius: 30px; transition: 0.3s;
-        }
-        .btn-menu:hover { background-color: #e68a00; }
 
-        /* 📦 BLOQUES DE CONTENIDO EN BLANCO (CARTA DE PIZZAS) */
+        /* 📦 BLOQUE BLANCO DE PIZZAS */
         .white-box {
             background-color: #ffffff; color: #333333;
-            padding: 50px 20px; text-align: center;
+            padding: 60px 20px; text-align: center;
         }
-        .container { max-width: 1000px; margin: 0 auto; }
-        .features { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px; gap: 20px; }
+
+        /* 🌟 CONTENEDOR AMPLIO PARA LAS TARJETAS */
+        .container { 
+            width: 95% !important;
+            max-width: 1450px !important; 
+            margin: 0 auto; 
+        }
+
+        /* 📦 HILERA HORIZONTAL CON GRAN ESPACIO */
+        .features { 
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 60px !important; 
+            margin-top: 40px; 
+            width: 100%;
+            box-sizing: border-box;
+        }
         
-        /* Adaptación de las tarjetas para las Pizzas */
-        .feature-item { width: 280px; padding: 20px; background: #f9f9f9; border-radius: 8px; border: 1px solid #ddd; }
-        .feature-item h3 { color: #2E7D32; margin-top: 5px; }
-        .pizza-icon { font-size: 45px; margin-bottom: 10px; }
-        .precio { display: block; font-weight: bold; font-size: 18px; color: #ff9800; margin-top: 15px; }
+        /* 🟥 TARJETAS CUADRADAS GRANDES (RELACIÓN 1:1) */
+        .feature-item { 
+            width: 400px !important;  
+            height: 420px !important; 
+            flex: none !important;    
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important; 
+            align-items: center !important; 
+            padding: 35px !important; 
+            background: #f9f9f9; 
+            border-radius: 18px; 
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
 
-        /* 👨‍🍳 SECCIÓN DEL CHEF / HISTORIA */
-        .chef-section { padding: 50px 20px; text-align: center; background-color: #1B5E20; }
-        .chef-text { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 16px; }
+                /* 📦 CONTENEDOR EN FILAS PERFECTAS DE TRES */
+        .features { 
+            display: grid !important; 
+            grid-template-columns: repeat(3, 1fr) !important; /* Fuerza exactamente 3 tarjetas por fila */
+            gap: 40px !important; /* Separación elegante entre tarjetas hacia los lados y hacia abajo */
+            margin-top: 40px; 
+            width: 100%;
+            justify-items: center !important; /* Centra las tarjetas gigantes dentro de su celda */
+            box-sizing: border-box;
+        }
 
-        /* 📍 PIE DE PÁGINA Y DATOS DE CONTACTO */
-        footer { background-color: #114014; padding: 40px 20px; text-align: center; font-size: 14px; color: white; }
-        .contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 30px; }
-        .contact-box { min-width: 200px; }
-        .contact-box h4 { color: #A5D6A7; margin-bottom: 10px; }
+        /* 📸 DISEÑO DE LAS IMÁGENES DE PIZZA */
+        .pizza-img {
+            width: 140px !important;          
+            height: 140px !important;        
+            object-fit: cover !important;    
+            border-radius: 12px;   
+            margin-bottom: 5px;  
+        }
+        .pizza-icon { font-size: 30px; margin-bottom: 5px; }
 
-        /* Posicionamiento del contenedor del menú desplegable */
+        /* 🧡 BOTÓN KOSÁRBA NARANJA ESTILIZADO */
+        .btn-kosar {
+            display: inline-block; background-color: #ff9800; color: white;
+            padding: 10px 25px; font-size: 16px; font-weight: bold;
+            text-decoration: none; border-radius: 30px; transition: 0.3s;
+            border: none; cursor: pointer; width: 100%; box-sizing: border-box;
+        }
+        .btn-kosar:hover { background-color: #e68a00; }
+
+        /* Menú desplegable */
         .dropdown { position: relative; }
-        .dropdown-content {
-            display: none; position: absolute; background-color: #ffffff;
-            min-width: 180px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-            z-index: 100; border-radius: 4px;
-        }
-        .dropdown-content a {
-            color: #333333 !important; padding: 12px 16px;
-            text-decoration: none; display: block; text-align: left; font-size: 15px;
-        }
+        .dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 180px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 100; border-radius: 4px; }
+        .dropdown-content a { color: #333333 !important; padding: 12px 16px; text-decoration: none; display: block; text-align: left; font-size: 15px; }
         .dropdown-content a:hover { background-color: #f1f1f1; color: #2E7D32 !important; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* 📱 RESPONSIVE: CELULARES */
+        /* 📱 RESPONSIVE CELULARES */
         @media screen and (max-width: 768px) {
-            .nav-menu {
-                display: none; flex-direction: column; width: 100%;
-                position: absolute; top: 58px; left: 0; background-color: #1B5E20; z-index: 99;
-            }
-            .nav-menu.responsive { display: flex; }
-            .nav-menu li { text-align: center; width: 100%; }
+            .nav-menu { display: none; flex-direction: column !important; width: 100%; position: absolute; top: 58px; left: 0; background-color: #1B5E20; z-index: 99; }
+            .nav-menu.responsive { display: flex !important; }
             .icon-menu { display: block; }
-            .hero h1 { font-size: 32px; }
-            .features { flex-direction: column; align-items: center; }
-            .feature-item { width: 90%; }
-            .contact-grid { flex-direction: column; gap: 20px; }
-            .dropdown-content { position: relative; box-shadow: none; background-color: #2E7D32; width: 100%; }
-            .dropdown-content a { color: #ffffff !important; text-align: center; padding: 10px 0; }
+            .features { flex-direction: column !important; align-items: center !important; gap: 25px !important; }
+            .feature-item { width: 90% !important; height: auto !important; aspect-ratio: 1 / 1 !important; padding: 25px !important; }
         }
+        @media screen and (max-width: 768px) {
+            .features { 
+                grid-template-columns: 1fr !important; /* En celulares pasa automáticamente a filas de 1 pizza */
+                gap: 25px !important;
+            }
+            .feature-item { 
+                width: 90% !important; 
+                height: auto !important; 
+                aspect-ratio: 1 / 1 !important; 
+            }
+        }
+
     </style>
 </head>
 <body>
 
     <!-- ☰ BARRA DE NAVEGACIÓN -->
     <nav class="navbar">
-        <div class="logo"><a href="index.html">Basilico Pizzéria</a></div>
+        <div class="logo">
+            <a href="index.html">Basilico Pizzéria</a>
+        </div>
         <a href="javascript:void(0);" class="icon-menu" onclick="toggleMenu()">☰</a>
         <ul class="nav-menu" id="myNavMenu">
-            <li><a href="index.html">Főoldal</a></li>
-            <li><a href="#">Pizzák</a></li>
-            
-            <!-- 🍕 MENÚ DESPLEGABLE: MENÜ -->
+            <li><a href="Főoldal.html">Főoldal</a></li>
+            <li><a href="pizzák.html">Pizzák</a></li>
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">Menü ▾</a>
                 <div class="dropdown-content">
@@ -113,80 +170,126 @@
                     <a href="deszertek.html">Desszertek</a>
                 </div>
             </li>
-            
-            <li><a href="#">Házhozszállítás</a></li>
-            <li><a href="#">Nyitvatartás</a></li>
+            <li><a href="javascript:void(0);" onclick="document.getElementById('nyitvaModal').showModal();">Nyitvatartás ▾</a></li>
+            <li><a href="Kosárba.html">🛒 Kosár (<span id="cart-count">0</span>)</a></li>
         </ul>
     </nav>
+
+    
+
+    <!-- 🕒 VENTANA MODAL EMERGENTE DE NYITVATARTÁS -->
+    <dialog id="nyitvaModal" style="border: none; border-radius: 12px; padding: 25px; max-width: 90vw; width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); font-family: Arial, sans-serif; box-sizing: border-box; background-color: #ffffff; color: #333333; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100000;">
+        <div style="text-align: right; margin-bottom: 5px;">
+            <button onclick="document.getElementById('nyitvaModal').close();" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #999; padding: 0; line-height: 1;">&times;</button>
+        </div>
+        <span style="display:block; padding-bottom: 10px; color: #2E7D32; font-weight: bold; font-size: 18px; border-bottom: 2px solid #2E7D32; text-align: center; margin-bottom: 15px;">Nyitvatartási Idő</span>
+        <div style="font-size: 15px; line-height: 1.8;">
+            <p style="margin: 5px 0; display: flex; justify-content: space-between;"><strong>Hétfő - Péntek:</strong> <span>11:30 - 21:00</span></p>
+            <p style="margin: 5px 0; display: flex; justify-content: space-between;"><strong>Szombat:</strong> <span>12:00 - 22:00</span></p>
+            <p style="margin: 5px 0; display: flex; justify-content: space-between;"><strong>Vasárnap:</strong> <span>12:00 - 22:00</span></p>
+            <small style="color: #2E7D32; display: block; text-align: center; margin-top: 10px; font-weight: bold;">Rendelésfelvétel: 20:30-ig</small>
+        </div>
+        <button onclick="document.getElementById('nyitvaModal').close();" style="width: 100%; background-color: #2E7D32; color: white; border: none; padding: 12px; border-radius: 30px; font-weight: bold; margin-top: 20px; cursor: pointer; font-size: 15px; transition: 0.2s;">Bezárás</button>
+    </dialog>
 
     <!-- 🎯 HERO SECCIÓN -->
     <section class="hero">
         <h1>Tradicionális Pizzáink</h1>
-        <h2>Kövön sütött, ropogós, autentikus olasz élvezet!</h2>
-        <a href="#kinalat" class="btn-menu">Megnézem a kínálatot</a>
+        <h2>Válaszd ki a kedvenced és tedd a kosárba!</h2>
     </section>
 
-    <!-- 📦 SECCIÓN KÍNÁLAT (CARTA DE PIZZAS TRADICIONALES) -->
+    <!-- 📦 SECCIÓN KÍNÁLAT CON EL BOTÓN INTERACTIVO FIXED -->
     <section class="white-box" id="kinalat">
         <div class="container">
             <h2>Klasszikus Olasz Kínálatunk</h2>
-            <p>Eredeti olasz receptúra alapján készült, 32 cm-es vékony tésztás pizzák prémium alapanyagokból.</p>
             <div class="features">
                 
                 <!-- Pizza 1 -->
                 <div class="feature-item">
+                    <img src="foto.jpg" alt="Margherita Pizza" class="pizza-img">
                     <div class="pizza-icon">🍕</div>
                     <h3>Margherita</h3>
-                    <p>Paradicsomszósz, friss mozzarella sajt, bazsalikom és egy kevés extra szűz olívaolaj.</p>
+                    <p>Paradicsomszósz, friss mozzarella sajt, bazsalikom.</p>
                     <span class="precio">2.490 Ft</span>
+                    <button onclick="hozzaadPizza('Margherita Pizza')" class="btn-kosar">Kosárba 🛒</button>
                 </div>
 
                 <!-- Pizza 2 -->
                 <div class="feature-item">
+                    <img src="foto.jpg" alt="Prosciutto e Funghi" class="pizza-img">
                     <div class="pizza-icon">🍕</div>
                     <h3>Prosciutto e Funghi</h3>
-                    <p>Paradicsomszósz, prémium mozzarella sajt, minőségi olasz főtt sonka és friss gomba.</p>
+                    <p>Paradicsomszósz, mozzarella sajt, minőségi sonka és gomba.</p>
                     <span class="precio">2.950 Ft</span>
+                    <button onclick="hozzaadPizza('Prosciutto e Funghi')" class="btn-kosar">Kosárba 🛒</button>
                 </div>
 
                 <!-- Pizza 3 -->
                 <div class="feature-item">
+                    <img src="foto.jpg" alt="Diavola" class="pizza-img">
                     <div class="pizza-icon">🍕</div>
                     <h3>Diavola</h3>
-                    <p>Paradicsomszósz, mozzarella sajt, pikáns olasz szalámi és egy kis csípős pepperoni.</p>
+                    <p>Paradicsomszósz, mozzarella sajt, pikáns olasz szalámi.</p>
                     <span class="precio">3.100 Ft</span>
+                    <button onclick="hozzaadPizza('Diavola Pizza')" class="btn-kosar">Kosárba 🛒</button>
+                </div>
+<!-- Pizza 4 -->
+                <div class="feature-item">
+                    <img src="foto.jpg" alt="Diavola" class="pizza-img">
+                    <div class="pizza-icon">🍕</div>
+                    <h3>Diavola</h3>
+                    <p>Paradicsomszósz, mozzarella sajt, pikáns olasz szalámi.</p>
+                    <span class="precio">3.100 Ft</span>
+                    <button onclick="hozzaadPizza('Diavola Pizza')" class="btn-kosar">Kosárba 🛒</button>
+                </div>
+
+<!-- Pizza 5 -->
+                <div class="feature-item">
+                    <img src="foto.jpg" alt="Diavola" class="pizza-img">
+                    <div class="pizza-icon">🍕</div>
+                    <h3>Diavola</h3>
+                    <p>Paradicsomszósz, mozzarella sajt, pikáns olasz szalámi.</p>
+                    <span class="precio">3.100 Ft</span>
+                    <button onclick="hozzaadPizza('Diavola Pizza')" class="btn-kosar">Kosárba 🛒</button>
+                </div>
+<!-- Pizza6 -->
+                <div class="feature-item">
+                    <img src="foto.jpg" alt="Diavola" class="pizza-img">
+                    <div class="pizza-icon">🍕</div>
+                    <h3>Diavola</h3>
+                    <p>Paradicsomszósz, mozzarella sajt, pikáns olasz szalámi.</p>
+                    <span class="precio">3.100 Ft</span>
+                    <button onclick="hozzaadPizza('Diavola Pizza')" class="btn-kosar">Kosárba 🛒</button>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- 👨‍🍳 SECCIÓN TRADICIÓN -->
-    <section class="chef-section">
-        <div class="chef-text">
-            <h2>Hogyan készül az igazi tradicionális pizza?</h2>
-            <p>Tésztánkat legalább 48 órán át kelesztjük hideg helyen, hogy könnyű és tökéletesen emészthető legyen. Ezután kézzel nyújtjuk, majd a San Marzano paradicsomszósszal és friss mozzarellával megpakolva azonnal a forró samott köves kemencébe vetjük. Nem használunk semmilyen adalékanyagot vagy sütőport.</p>
-        </div>
-    </section>
-
-    <!-- 👣 PIE DE PÁGINA Y CONTACTO -->
-    <footer>
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-box">
-                    <h4>Címünk</h4>
-                    <p>Budapest, Szív utca</p>
+    <!-- 👣 PIE DE PÁGINA ACTUALIZADO CON TUS DATOS REALES -->
+    <footer style="background-color: #114014; padding: 40px 20px; text-align: center; font-size: 15px; color: white; width: 100%; box-sizing: border-box;">
+        <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+            <div style="display: flex !important; flex-direction: row !important; justify-content: space-around !important; flex-wrap: wrap !important; gap: 30px !important; margin-bottom: 30px; text-align: center;">
+                <div style="min-width: 250px; flex: 1;">
+                    <h4 style="color: #A5D6A7; margin: 0 0 10px 0; font-size: 18px; font-weight: bold;">📍 Címünk</h4>
+                    <p style="margin: 0; line-height: 1.5; font-size: 15px;">Budapest, Kőfaragó u. 15, 1085</p>
                 </div>
-                <div class="contact-box">
-                    <h4>Rendelés</h4>
-                    <p>+36 30 123 4567</p>
+                <div style="min-width: 250px; flex: 1;">
+                    <h4 style="color: #A5D6A7; margin: 0 0 10px 0; font-size: 18px; font-weight: bold;">📞 Telefon</h4>
+                    <p style="margin: 0; line-height: 1.5; font-size: 15px;">(06 1) 781 0538</p>
+                </div>
+                <div style="min-width: 250px; flex: 1;">
+                    <h4 style="color: #A5D6A7; margin: 0 0 10px 0; font-size: 18px; font-weight: bold;">🕒 Nyitvatartás</h4>
+                    <p style="margin: 0; line-height: 1.5; font-size: 15px;">Hétfő - Szombat: 12:00 - 21:00</p>
                 </div>
             </div>
-            <p>&copy; 2026 Basilico Pizzéria - Minden jog fenntartva.</p>
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 14px; opacity: 0.9;">
+                <p>&copy; 2026 Basilico Pizzéria. Minden jog fenntartva. | Impresszum | Adatkezelés</p>
+            </div>
         </div>
     </footer>
 
-    <!-- 📱 SCRIPT PARA EL MENÚ RESPONSIVE -->
+    <!-- 🧠 LÓGICA JAVASCRIPT CORREGIDA SIN REDIRECCIÓN AUTOMÁTICA -->
     <script>
         function toggleMenu() {
             var x = document.getElementById("myNavMenu");
@@ -196,6 +299,31 @@
                 x.className = "nav-menu";
             }
         }
+
+        // Actualiza dinámicamente el número indicador flotante (X)
+        function refreshBadge() {
+            let car = JSON.parse(localStorage.getItem('pizzeria_cart')) || [];
+            const badgeElement = document.getElementById('cart-count');
+            if (badgeElement) {
+                badgeElement.innerText = car.length;
+            }
+        }
+
+        // Guarda el producto en el carrito fijo sin saltar de página
+        function hozzaadPizza(nombreProducto) {
+            let car = JSON.parse(localStorage.getItem('pizzeria_cart')) || [];
+            car.push(nombreProducto);
+            localStorage.setItem('pizzeria_cart', JSON.stringify(car));
+            
+            // Actualiza el número de arriba inmediatamente
+            refreshBadge();
+            
+            // Lanza aviso sutil de confirmación
+            alert(nombreProducto + ' hozzáadva a kosárhoz! 🛒');
+        }
+
+        // Forzar escaneo numérico al abrir la ventana
+        window.addEventListener('DOMContentLoaded', refreshBadge);
     </script>
 </body>
 </html>

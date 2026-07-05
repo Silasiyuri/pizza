@@ -3,82 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basilico Pizzéria | Panna Desszertek</title>
-    <meta name="description" content="Kényeztesse magát kézműves olasz desszertjeinkkel. Tiramisu, Panna Cotta és egyéb finomságok a Basilico Pizzériában.">
+    <title>Basilico Pizzéria | Kövön sütött tradicionális pizzák</title>
+    <meta name="description" content="Kövön sütött, kézzel nyújtott tradicionális olasz és New York-style pizzák Budapest szívében. Rendeljen online!">
     <style>
-/* 🍕 ALINEACIÓN DEL LOGO A LA IZQUIERDA */
-.logo {
-    margin-right: auto; /* Empuja todo el menú hacia la derecha y clava el logo a la izquierda */
-    padding: 10px 0;
-}
-.logo a { 
-    color: white; 
-    text-decoration: none; 
-    font-weight: bold; 
-    font-size: 24px; 
-    white-space: nowrap; /* Evita que el nombre se parta en dos renglones */
-}
-
         /* 🎨 FONDO VERDE Y ESTILOS BASE */
         body { margin: 0; padding: 0; font-family: 'Arial', sans-serif; background-color: #2E7D32; color: #ffffff; }
-        .navbar { background-color: #1B5E20; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; position: relative; }
-        .logo a { color: white; text-decoration: none; font-weight: bold; font-size: 24px; }
-        .nav-menu { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
+        .nav-menu {
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    display: flex !important;            /* Pone los enlaces en línea horizontal */
+    flex-direction: row !important;     /* Fuerza la hilera de opciones */
+    align-items: center !important;     /* Centra las palabras */
+}
+
+        .nav-menu { list-style: none; margin: 0; padding: 0; display: flex; }
         .nav-menu li a { display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; }
         .icon-menu { display: none; color: white; font-size: 28px; text-decoration: none; }
-        
+        /* 🎯 SECCIÓN PRINCIPAL (HERO) ESTILO BASILICO */
         .hero { text-align: center; padding: 80px 20px; background: linear-gradient(rgba(27,94,32,0.85), rgba(46,125,50,0.85)); }
         .hero h1 { font-size: 45px; margin: 0 0 10px 0; text-transform: uppercase; }
         .hero h2 { font-size: 22px; color: #A5D6A7; margin: 0 0 30px 0; }
-        .btn-menu { display: inline-block; background-color: #ff9800; color: white; padding: 12px 30px; font-size: 16px; font-weight: bold; text-decoration: none; border-radius: 30px; transition: 0.3s; cursor: pointer; border: none; }
+        .btn-menu { display: inline-block; background-color: #ff9800; color: white; padding: 15px 35px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 30px; transition: 0.3s; }
         .btn-menu:hover { background-color: #e68a00; }
-
+        /* 📦 BLOQUES DE CONTENIDO EN BLANCO */
         .white-box { background-color: #ffffff; color: #333333; padding: 60px 20px; text-align: center; }
+        /* 🌟 CONTENEDOR MÁXIMO EXPANDIDO HORIZONTALMENTE */
         .container { width: 95% !important; max-width: 1450px !important; margin: 0 auto; }
-        
-        /* CONTENEDOR EN HILERA DE TRES EXPANDIDO */
+        /* 📦 CONTENEDOR EN HILERA HORIZONTAL CON SEPARACIÓN AMPLIA */
         .features { display: flex !important; flex-direction: row !important; justify-content: center !important; gap: 60px !important; margin-top: 40px; width: 100%; box-sizing: border-box; }
-        
-        /* 🟥 TARJETAS FORZADAS A TAMAÑO CUADRADO GIGANTE (Mismo ancho que el index) */
+        /* 🟥 TARJETAS FORZADAS A TAMAÑO CUADRADO GIGANTE */
         .feature-item { width: 400px !important; height: 400px !important; flex: none !important; display: flex !important; flex-direction: column !important; justify-content: center !important; align-items: center !important; padding: 40px !important; background: #f9f9f9; border-radius: 18px; box-sizing: border-box; border: 1px solid #ddd; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
         .feature-item h3 { color: #2E7D32; font-size: 26px; margin: 10px 0; }
         .feature-item p { font-size: 16px; line-height: 1.5; color: #555; margin: 0; }
-        .desszert-icon { font-size: 50px; margin-bottom: 10px; }
-        .precio { display: block; font-weight: bold; font-size: 19px; color: #ff9800; margin-top: 15px; margin-bottom: 15px; }
-
-        /* 🛒 PANEL DEL CARRITO DE COMPRAS (KOSÁR) */
-        .kosar-section { background-color: #e8f5e9; color: #333333; padding: 40px 20px; border-top: 4px solid #1B5E20; text-align: center; }
-        .kosar-box { max-width: 600px; margin: 0 auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: left; }
-        .kosar-box h2 { color: #1B5E20; margin-top: 0; text-align: center; border-bottom: 2px solid #2E7D32; padding-bottom: 10px; }
-        .kosar-lista { list-style: none; padding: 0; margin: 15px 0; font-size: 16px; }
-        .kosar-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #ccc; align-items: center; }
-        .btn-torol { background: #e74c3c; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 12px; }
-
-        /* 📋 FORMULARIO */
-        .order-section { background-color: #f1f8e9; color: #333333; padding: 40px 20px; text-align: center; }
+        /* 📋 ESTILOS DEL FORMULARIO DE PEDIDOS ADAPTADOS */
+        .order-section { background-color: #f1f8e9; color: #333333; padding: 60px 20px; text-align: center; }
         .form-container { max-width: 500px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: left; }
+        .form-container h2 { text-align: center; color: #2E7D32; margin-top: 0; margin-bottom: 25px; }
         .campo { margin-bottom: 20px; }
         label { display: block; font-weight: bold; margin-bottom: 8px; color: #1B5E20; }
         input, textarea { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; }
+        input:focus, textarea:focus { outline: none; border-color: #2E7D32; }
         .btn-submit { width: 100%; padding: 14px; background: #ff9800; color: white; border: none; font-size: 18px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.3s; }
         .btn-submit:hover { background: #e68a00; }
-
+        /* 👨‍🍳 SECCIÓN DEL CHEF / HISTORIA */
         .chef-section { padding: 50px 20px; text-align: center; background-color: #1B5E20; }
         .chef-text { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 16px; }
+        /* 📍 PIE DE PÁGINA Y DATOS DE CONTACTO */
         footer { background-color: #114014; padding: 40px 20px; text-align: center; font-size: 14px; color: white; }
-        .contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-        
+        .contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 30px; }
+        .contact-box { min-width: 200px; }
+        .contact-box h4 { color: #A5D6A7; margin-bottom: 10px; }
+        /* Posicionamiento del contenedor del menú */
         .dropdown { position: relative; }
         .dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 180px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 100; border-radius: 4px; }
         .dropdown-content a { color: #333333 !important; padding: 12px 16px; text-decoration: none; display: block; text-align: left; font-size: 15px; }
+        .dropdown-content a:hover { background-color: #f1f1f1; color: #2E7D32 !important; }
         .dropdown:hover .dropdown-content { display: block; }
-
+        /* 📱 RESPONSIVE: CELULARES */
         @media screen and (max-width: 768px) {
             .nav-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 58px; left: 0; background-color: #1B5E20; z-index: 99; }
             .nav-menu.responsive { display: flex; }
+            .nav-menu li { text-align: center; width: 100%; }
             .icon-menu { display: block; }
+            .hero h1 { font-size: 32px; }
             .features { flex-direction: column !important; align-items: center !important; gap: 25px !important; }
             .feature-item { width: 90% !important; height: auto !important; aspect-ratio: 1 / 1 !important; padding: 25px !important; }
+            .contact-grid { flex-direction: column; gap: 20px; }
+            .dropdown-content { position: relative; box-shadow: none; background-color: #2E7D32; width: 100%; }
+            .dropdown-content a { color: #ffffff !important; text-align: center; padding: 10px 0; }
         }
 /* 🛠️ ESTILOS PARA LA TARJETA HORARIO FLOTANTE PRIVADA */
 .horario-flotante {
@@ -159,12 +152,11 @@
     }
 }
 
-
     </style>
 </head>
 <body>
 
-                <!-- ☰ BARRA DE NAVEGACIÓN REESTRUCTURADA (LOGO A LA IZQUIERDA) -->
+       <!-- ☰ BARRA DE NAVEGACIÓN REESTRUCTURADA (LOGO A LA IZQUIERDA) -->
     <nav class="navbar" style="display: flex !important; justify-content: space-between !important; align-items: center !important; background-color: #1B5E20; padding: 15px 20px; position: relative; box-sizing: border-box;">
         
         <!-- LOGO FIJO A LA IZQUIERDA -->
@@ -177,7 +169,7 @@
         
         <!-- MENÚ DE ENLACES ALINEADO A LA DERECHA -->
         <ul class="nav-menu" id="myNavMenu">
-            <li><a href="Főoldal.html">Főoldal</a></li>
+            <li><a href="index.html">Főoldal</a></li>
             <li><a href="pizzák.html">Pizzák</a></li>
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">Menü ▾</a>
@@ -214,52 +206,42 @@
 
     <!-- 🎯 HERO SECCIÓN -->
     <section class="hero">
-        <h1>Panna Desszertek</h1>
-        <h2>Kézműves olasz édességek közvetlenül a kosarába!</h2>
-        <a href="#kinalat" class="btn-menu">Megnézem a desszerteket</a>
+        <h1>Kövön sütött tradicionális pizzák</h1>
+        <h2>Rendelésfelvétel mindennap 20:30-ig!</h2>
+        <a href="#rendeles" class="btn-menu">Éhes vagyok, rendelek egy pizzát</a>
     </section>
 
-    <!-- 📦 SECCIÓN DE DESSZERTEK -->
-    <section class="white-box" id="kinalat">
+    <!-- 📦 SECCIÓN INFORMACIÓN DE ENTREGA -->
+    <section class="white-box">
         <div class="container">
-            <h2>Kézműves édességeink</h2>
+            <h2>Élvezd a pizzád otthon is</h2>
+            <p>Friss, adalékanyagmentes és magas minőségű olasz alapanyagokból készítve.</p>
+            
             <div class="features">
-                <!-- Postre 1 -->
                 <div class="feature-item">
-                    <div class="desszert-icon">🍰</div>
-                    <h3>Klasszikus Tiramisu</h3>
-                    <p>Mascarpone krém, kávés babapiskóta és minőségi kakaópor.</p>
-                    <span class="precio">1.490 Ft</span>
-                    <button onclick="hozzaadKosarhoz('Klasszikus Tiramisu')" class="btn-menu">Kosárba 🛒</button>
+                    <span style="font-size: 50px;">🚗</span>
+                    <h3>Házhozszállítás</h3>
+                    <p>Gyors és megbízható meleg ételkiszállítás egyenesen az Ön kapujáig.</p>
                 </div>
-                <!-- Postre 2 -->
                 <div class="feature-item">
-                    <div class="desszert-icon">🍮</div>
-                    <h3>Panna Cotta</h3>
-                    <p>Főzött tejszínes krém választható erdei gyümölcsöntettel.</p>
-                    <span class="precio">1.350 Ft</span>
-                    <button onclick="hozzaadKosarhoz('Panna Cotta')" class="btn-menu">Kosárba 🛒</button>
+                    <span style="font-size: 50px;">🛍️</span>
+                    <h3>Személyes átvétel</h3>
+                    <p>Rendeljen online az oldalon keresztül, és vegye át sorban állás nélkül.</p>
                 </div>
-                <!-- Postre 3 -->
                 <div class="feature-item">
-                    <div class="desszert-icon">🍫</div>
-                    <h3>Csokis Szuflé</h3>
-                    <p>Meleg lávasütemény folyékony belsővel és vaníliafagylalttal.</p>
-                    <span class="precio">1.650 Ft</span>
-                    <button onclick="hozzaadKosarhoz('Csokis Szuflé')" class="btn-menu">Kosárba 🛒</button>
+                    <span style="font-size: 50px;">🍕</span>
+                    <h3>New York-style</h3>
+                    <p>Hatalmas, ropogós szélű 45-50 cm-es pizzák szeletenként is kaphatók.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    
-    </section>
-
-    <!-- 👨‍🍳 SECCIÓN CALIDAD -->
+    <!-- 👨‍🍳 SECCIÓN HISTORIA DEL CHEF -->
     <section class="chef-section">
         <div class="chef-text">
-            <h2>Minőség kompromisszumok nélkül</h2>
-            <p>Desszertjeinket mindennap frissen készítjük, kizárólag valódi tejszín és prémium alapanyagok hozzáadásával, mesterséges adalékanyagok és tartósítószerek nélkül.</p>
+            <h2>Tradíció és Szenvedély</h2>
+            <p>Kézzel nyújtott pizzáinkat a pizza hazájában használt olasz módszerek szerint sütjük a 400-500 fokos kemencében. Az ételek elkészítéséhez kizárólag prémium minőségű alapanyagokat használunk, adalékanyagok nélkül. Kínálatunkban a vegetáriánus étrendet követők is találnak kedvükre való finomságot.</p>
         </div>
     </section>
 
@@ -284,78 +266,34 @@
         </div>
     </footer>
 
-    <!-- 🛠️ SCRIPT MENÚ MÓVIL -->
-    <script>
-    function toggleMenu() {
-        var menu = document.getElementById("myNavMenu");
-        if (menu.className === "nav-menu") {
-            menu.className += " responsive";
-        } else {
-            menu.className = "nav-menu";
-        }
-    }
-
     <script>
         function toggleMenu() {
             var x = document.getElementById("myNavMenu");
-            x.className = (x.className === "nav-menu") ? "nav-menu responsive" : "nav-menu";
-        }
-
-        // LÓGICA DE COMPARTICIÓN DEL CARRITO (Se sincroniza automáticamente con el index)
-        let carrito = JSON.parse(localStorage.getItem('pizzeria_cart')) || [];
-
-        function frissitKosarVisual() {
-            const listaUl = document.getElementById('lista-kosar');
-            const contadorBadge = document.getElementById('cart-count');
-            if(contadorBadge) contadorBadge.innerText = carrito.length;
-
-            if (carrito.length === 0) {
-                listaUl.innerHTML = '<li style="color: #666; text-align: center;">A kosár üres.</li>';
-                return;
+            if (x.className === "nav-menu") {
+                x.className += " responsive";
+            } else {
+                x.className = "nav-menu";
             }
-
-            listaUl.innerHTML = '';
-            carrito.forEach((item, index) => {
-                listaUl.innerHTML += `
-                    <li class="kosar-item">
-                        <span>✨ 1x ${item}</span>
-                        <button class="btn-torol" onclick="eltávolítKosárból(${index})">Törlés</button>
-                    </li>`;
-            });
-            localStorage.setItem('pizzeria_cart', JSON.stringify(carrito));
         }
 
-        function hozzaadKosarhoz(termekNev) {
-            carrito.push(termekNev);
-            frissitKosarVisual();
-            alert(termekNev + ' hozzáadva a kosárhoz! 🛒');
-        }
-
-        function eltávolítKosárból(index) {
-            carrito.splice(index, 1);
-            frissitKosarVisual();
-        }
-
-        function veglegenitKosar() {
-            if (carrito.length === 0) {
-                alert('A kosár üres! Előbb adj hozzá termékeket.');
-                return;
-            }
-            const resumenTexto = carrito.map(p => "• " + p).join("\n");
-            document.getElementById('detalle').value = resumenTexto;
-            document.getElementById('rendeles').scrollIntoView({ behavior: 'smooth' });
-        }
-
+        // Programación del Formulario de Pedidos (Simulador de cocina)
         document.getElementById('formPedido').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('A rendelést sikeresen elküldtük a konyhára! Séfjeink már készítik a desszerteket.');
-            carrito = [];
-            localStorage.removeItem('pizzeria_cart');
-            frissitKosarVisual();
+
+            const nuevoPedido = {
+                nombre: document.getElementById('nombre').value,
+                direccion: document.getElementById('direccion').value,
+                detalle: document.getElementById('detalle').value,
+                timestamp: Date.now()
+            };
+
+            // Guarda en la memoria local (localStorage)
+            localStorage.setItem('ultimo_pedido', JSON.stringify(nuevoPedido));
+            
+            // Mensaje de éxito bilingüe
+            alert('A rendelést sikeresen elküldtük a konyhára! (¡Pedido enviado con éxito a la cocina!)');
             document.getElementById('formPedido').reset();
         });
-
-        window.addEventListener('DOMContentLoaded', frissitKosarVisual);
     </script>
     <!-- 🕒 TARJETA FLOTANTE DE NYITVATARTÁS -->
     <div class="horario-flotante">
