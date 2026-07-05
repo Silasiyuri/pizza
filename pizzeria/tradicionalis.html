@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradicionális Pizzák Kínálata | Basilico</title>
+    <meta name="description" content="Tekintse meg tradicionális, kövön sütött olasz pizzáink kínálatát.">
+    <style>
+        /* 🎨 FONDO VERDE Y ESTILOS BASE */
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #2E7D32; color: #ffffff;
+        }
+        /* ☰ BARRA DE NAVEGACIÓN MÓVIL (1B5E20) */
+        .navbar {
+            background-color: #1B5E20;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 20px; position: relative;
+        }
+        .logo a { color: white; text-decoration: none; font-weight: bold; font-size: 24px; }
+        .nav-menu { list-style: none; margin: 0; padding: 0; display: flex; }
+        .nav-menu li a { display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; }
+        .icon-menu { display: none; color: white; font-size: 28px; text-decoration: none; }
+
+        /* 👑 CABECERA */
+        .header-section {
+            text-align: center; padding: 40px 20px;
+            background: linear-gradient(rgba(27,94,32,0.85), rgba(46,125,50,0.85));
+        }
+        .header-section h1 { font-size: 36px; margin: 0 0 10px 0; }
+
+        /* 📦 CONTENEDOR BLANCO PARA EL MENÚ DE PIZZAS */
+        .menu-container {
+            background-color: #ffffff; color: #333333;
+            padding: 40px 20px; max-width: 1000px; margin: 0 auto;
+        }
+        
+        /* 🍕 REJILLA DE PIZZAS */
+        .pizza-list {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px; margin-top: 30px;
+        }
+        .pizza-item {
+            background: #f9f9f9; padding: 20px; border-radius: 8px;
+            border: 1px solid #e0e0e0; display: flex; flex-direction: column;
+            justify-content: space-between; transition: 0.2s;
+        }
+        .pizza-item:hover { transform: translateY(-3px); border-color: #2E7D32; }
+        .pizza-item h3 { color: #1B5E20; margin: 0 0 10px 0; font-size: 22px; }
+        .ingredients { font-size: 14px; color: #666; min-height: 50px; line-height: 1.4; }
+        .price-box {
+            margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .price { font-size: 18px; font-weight: bold; color: #2E7D32; }
+        .btn-order {
+            background-color: #ff9800; color: white; padding: 8px 15px;
+            text-decoration: none; font-weight: bold; font-size: 14px; border-radius: 4px;
+        }
+/* 👨‍🍳 SECCIÓN DEL CHEF / HISTORIA */
+        .chef-section { padding: 50px 20px; text-align: center; background-color: #1B5E20; }
+        .chef-text { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 16px; }
+
+
+         /* 📍 PIE DE PÁGINA Y DATOS DE CONTACTO */
+        footer { background-color: #114014; padding: 40px 20px; text-align: center; font-size: 14px; color: white; }
+        .contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 30px; }
+        .contact-box { min-width: 200px; }
+        .contact-box h4 { color: #A5D6A7; margin-bottom: 10px; }
+
+        /* Menú desplegable Estilos */
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none; position: absolute; background-color: #ffffff;
+            min-width: 180px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 100; border-radius: 4px;
+        }
+        .dropdown-content a {
+            color: #333333 !important; padding: 12px 16px;
+            text-decoration: none; display: block; text-align: left; font-size: 15px;
+        }
+        .dropdown-content a:hover { background-color: #f1f1f1; color: #2E7D32 !important; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* 📱 RESPONSIVE: CELULARES */
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                display: none; flex-direction: column; width: 100%;
+                position: absolute; top: 58px; left: 0; background-color: #1B5E20; z-index: 99;
+            }
+            .nav-menu.responsive { display: flex; }
+            .nav-menu li { text-align: center; width: 100%; }
+            .icon-menu { display: block; }
+            .hero h1 { font-size: 32px; }
+            .features { flex-direction: column; align-items: center; }
+            .feature-item { width: 90%; }
+            .contact-grid { flex-direction: column; gap: 20px; }
+            .dropdown-content { position: relative; box-shadow: none; background-color: #2E7D32; width: 100%; }
+            .dropdown-content a { color: #ffffff !important; text-align: center; padding: 10px 0; }
+        }
+/* 🛠️ AJUSTE ANTIDESBORDAMIENTO PARA CUALQUIER NAVEGADOR */
+.dropdown-horario-contenedor {
+    position: relative;
+    display: inline-block;
+}
+.dropbtn-horario {
+    display: block;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+.horario-drop {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0; /* Se alinea al borde derecho para que nunca se salga de la pantalla */
+    background-color: #ffffff;
+    width: 240px;
+    max-width: 90vw; /* Si el navegador mide menos de 240px, el cuadro se encoge automáticamente */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 99999;
+    border-radius: 4px;
+    padding: 12px;
+    box-sizing: border-box; /* Fuerza al navegador a incluir rellenos en el cálculo del ancho */
+}
+.dropdown-horario-contenedor:hover .horario-drop {
+    display: block;
+}
+.horario-header {
+    display: block;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+    color: #333333;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+.horario-row {
+    display: block;
+    color: #333333;
+    padding: 4px 6px;
+    font-size: 13px;
+    white-space: nowrap; /* Impide que los textos se amontonen en dos renglones */
+}
+
+/* 📱 ADAPTACIÓN PARA DISPOSITIVOS MÓVILES */
+@media screen and (max-width: 768px) {
+    .dropdown-horario-contenedor {
+        width: 100%;
+        text-align: center;
+    }
+    .horario-drop {
+        position: relative !important;
+        top: 0 !important;
+        right: auto !important;
+        margin: 10px auto !important;
+        width: 90% !important;
+        max-width: 260px !important;
+        box-shadow: none !important;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+         <!-- ☰ BARRA DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="logo"><a href="#">Basilico Pizzéria</a></div>
+        <a href="javascript:void(0);" class="icon-menu" onclick="toggleMenu()">☰</a>
+        <ul class="nav-menu" id="myNavMenu">
+            <li><a href="index.html">Főoldal</a></li>
+            <li><a href="pizzák.html">Pizzák</a></li>
+            
+            <!-- 🍕 MENÚ DESPLEGABLE: MENÜ -->
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Menü ▾</a>
+                <div class="dropdown-content">
+                  <a href="tradicionalis.html">Tradicionális Pizzák</a>
+
+                    <a href="#new-york">New York-style Pizza</a>
+                 <a href="uditok.html">Üdítőkínálat</a>
+
+                    <a href="deszertek.html">Desszertek</a>
+                </div>
+            </li>
+            
+            <li><a href="#">Házhozszállítás</a></li>
+            <!-- 🕒 NYITVATARTÁS COMPACTO Y RESPONSIVO -->
+            <li class="dropdown-horario-contenedor">
+                <a href="javascript:void(0)" class="dropbtn-horario">Nyitvatartás ▾</a>
+                <div class="horario-drop">
+                    <span class="horario-header">Nyitvatartási Idő:</span>
+                    <span class="horario-row"><b>Hétfő:</b> 11:30 - 21:00</span>
+                    <span class="horario-row"><b>Kedd:</b> 11:30 - 21:00</span>
+                    <span class="horario-row"><b>Szerda:</b> 11:30 - 21:00</span>
+                    <span class="horario-row"><b>Csütörtök:</b> 11:30 - 21:00</span>
+                    <span class="horario-row"><b>Péntek:</b> 11:30 - 21:00</span>
+                    <span class="horario-row"><b>Szombat:</b> 12:00 - 22:00</span>
+                    <span class="horario-row"><b>Vasárnap:</b> 12:00 - 22:00</span>
+                </div>
+            </li>
+
+
+        </ul>
+    </nav>
+
+
+    <!-- 👑 CABECERA -->
+    <header class="header-section">
+        <h1>Tradicionális Pizzáink</h1>
+        <p>Kövön sütött, kézzel nyújtott 32 cm-es autentikus remekművek</p>
+    </header>
+
+    <!-- 📦 LISTADO DE PIZZAS -->
+    <main class="menu-container">
+        <div class="pizza-list">
+            
+            <!-- PIZZA 1 -->
+            <div class="pizza-item">
+                <div>
+                    <h3>Margherita</h3>
+                    <p class="ingredients">Paradicsomszósz, mozzarella, friss bazsalikom, olívaolaj.</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">2.490 Ft</span>
+                    <a href="#" class="btn-order">Kosárba</a>
+                </div>
+            </div>
+
+            <!-- PIZZA 2 -->
+            <div class="pizza-item">
+                <div>
+                    <h3>Prosciutto</h3>
+                    <p class="ingredients">Paradicsomszósz, mozzarella, minőségi olasz főtt sonka.</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">2.990 Ft</span>
+                    <a href="#" class="btn-order">Kosárba</a>
+                </div>
+            </div>
+
+            <!-- PIZZA 3 -->
+            <div class="pizza-item">
+                <div>
+                    <h3>Salame</h3>
+                    <p class="ingredients">Paradicsomszósz, mozzarella, ropogós olasz szalámi.</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">2.990 Ft</span>
+                    <a href="#" class="btn-order">Kosárba</a>
+                </div>
+            </div>
+
+            <!-- PIZZA 4 -->
+            <div class="pizza-item">
+                <div>
+                    <h3>Quattro Formaggi</h3>
+                    <p class="ingredients">Paradicsomszósz, mozzarella, gorgonzola, parmezán, füstölt sajt.</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">3.290 Ft</span>
+                    <a href="#" class="btn-order">Kosárba</a>
+                </div>
+            </div>
+
+        
+<!-- PIZZA 5 -->
+            <div class="pizza-item">
+                <div>
+                    <h3>Quattro Formaggi</h3>
+                    <p class="ingredients">Paradicsomszósz, mozzarella, gorgonzola, parmezán, füstölt sajt.</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">3.290 Ft</span>
+                    <a href="#" class="btn-order">Kosárba</a>
+                </div>
+            </div>
+<!-- PIZZA 6 -->
+            <div class="pizza-item">
+                <div>
+                    <h3>Quattro Formaggi</h3>
+                    <p class="ingredients">Paradicsomszósz, mozzarella, gorgonzola, parmezán, füstölt sajt.</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">3.290 Ft</span>
+                    <a href="#" class="btn-order">Kosárba</a>
+                </div>
+</div>
+<!-- PIZZA 7 -->
+            <div class="pizza-item">
+                <div>
+                    <h3>Quattro Formaggi</h3>
+                    <p class="ingredients">Paradicsomszósz, mozzarella, gorgonzola, parmezán, füstölt sajt.</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">3.290 Ft</span>
+                    <a href="#" class="btn-order">Kosárba</a>
+                </div>
+</div>
+<!-- PIZZA 8 -->
+            <div class="pizza-item">
+                <div>
+                    <h3>Quattro Formaggi</h3>
+                    <p class="ingredients">Paradicsomszósz, mozzarella, gorgonzola, parmezán, füstölt sajt.</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">3.290 Ft</span>
+                    <a href="#" class="btn-order">Kosárba</a>
+                </div>
+        </div>
+    </main>
+
+    </section>
+
+    <!-- 👨‍🍳 SECCIÓN TRADICIÓN -->
+    <section class="chef-section">
+        <div class="chef-text">
+            <h2>Hogyan készül az igazi tradicionális pizza?</h2>
+            <p>Tésztánkat legalább 48 órán át kelesztjük hideg helyen, hogy könnyű és tökéletesen emészthető legyen. Ezután kézzel nyújtjuk, majd a San Marzano paradicsomszósszal és friss mozzarellával megpakolva azonnal a forró samott köves kemencébe vetjük. Nem használunk semmilyen adalékanyagot vagy sütőport.</p>
+        </div>
+    </section>
+
+    <!-- 👣 PIE DE PÁGINA Y CONTACTO -->
+    <footer>
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-box">
+                    <h4>Címünk</h4>
+                    <p>Budapest, Szív utca</p>
+                </div>
+                <div class="contact-box">
+                    <h4>Rendelés</h4>
+                    <p>+36 70 591 3929</p>
+                </div>
+            </div>
+            <p>&copy; 2026 Basilico Pizzéria - Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <!-- 📱 SCRIPT PARA EL MENÚ RESPONSIVE -->
+    <script>
+        function toggleMenu() {
+            var x = document.getElementById("myNavMenu");
+            if (x.className === "nav-menu") {
+                x.className += " responsive";
+            } else {
+                x.className = "nav-menu";
+            }
+        }
+    </script>
+</body>
+</html>

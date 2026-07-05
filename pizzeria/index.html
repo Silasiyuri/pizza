@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basilico Pizzéria | Kövön sütött tradicionális pizzák</title>
+    <meta name="description" content="Kövön sütött, kézzel nyújtott tradicionális olasz és New York-style pizzák Budapest szívében. Rendeljen online!">
+    <style>
+        /* 🎨 FONDO VERDE Y ESTILOS BASE */
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #2E7D32; color: #ffffff;
+        }
+        /* ☰ BARRA DE NAVEGACIÓN MÓVIL (1B5E20) */
+        .navbar {
+            background-color: #1B5E20;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 20px; position: relative;
+        }
+        .logo a { color: white; text-decoration: none; font-weight: bold; font-size: 24px; }
+        .nav-menu { list-style: none; margin: 0; padding: 0; display: flex; }
+        .nav-menu li a { display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; }
+        .icon-menu { display: none; color: white; font-size: 28px; text-decoration: none; }
+        
+        /* 🎯 SECCIÓN PRINCIPAL (HERO) ESTILO BASILICO */
+        .hero {
+            text-align: center; padding: 80px 20px;
+            background: linear-gradient(rgba(27,94,32,0.85), rgba(46,125,50,0.85));
+        }
+        .hero h1 { font-size: 45px; margin: 0 0 10px 0; text-transform: uppercase; }
+        .hero h2 { font-size: 22px; color: #A5D6A7; margin: 0 0 30px 0; }
+        .btn-menu {
+            display: inline-block; background-color: #ff9800; color: white;
+            padding: 15px 35px; font-size: 18px; font-weight: bold;
+            text-decoration: none; border-radius: 30px; transition: 0.3s;
+        }
+        .btn-menu:hover { background-color: #e68a00; }
+
+        /* 📦 BLOQUES DE CONTENIDO EN BLANCO (MÁXIMA CONVERSIÓN) */
+        .white-box {
+            background-color: #ffffff; color: #333333;
+            padding: 50px 20px; text-align: center;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .features { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px; gap: 20px; }
+        .feature-item { width: 280px; padding: 20px; background: #f9f9f9; border-radius: 8px; }
+        .feature-item h3 { color: #2E7D32; }
+
+        /* 👨‍🍳 SECCIÓN DEL CHEF / HISTORIA */
+        .chef-section { padding: 50px 20px; text-align: center; background-color: #1B5E20; }
+        .chef-text { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 16px; }
+
+        /* 📍 PIE DE PÁGINA Y DATOS DE CONTACTO */
+        footer { background-color: #114014; padding: 40px 20px; text-align: center; font-size: 14px; }
+        .contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 30px; }
+        .contact-box { min-width: 200px; }
+        .contact-box h4 { color: #A5D6A7; margin-bottom: 10px; }
+
+        /* 📱 RESPONSIVE: CELULARES */
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                display: none; flex-direction: column; width: 100%;
+                position: absolute; top: 58px; left: 0; background-color: #1B5E20; z-index: 99;
+            }
+            .nav-menu.responsive { display: flex; }
+            .nav-menu li { text-align: center; width: 100%; }
+            .icon-menu { display: block; }
+            .hero h1 { font-size: 32px; }
+            .features { flex-direction: column; align-items: center; }
+            .feature-item { width: 90%; }
+            .contact-grid { flex-direction: column; gap: 20px; }
+        }
+/* Posicionamiento del contenedor del menú */
+.dropdown {
+    position: relative;
+}
+
+/* Ocultar las opciones internas del menú por defecto */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff; /* Fondo blanco para que las letras sean legibles */
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 100;
+    border-radius: 4px;
+}
+
+/* Estilo de los enlaces individuales dentro de la lista del menú */
+.dropdown-content a {
+    color: #333333 !important; /* Texto en gris oscuro para máxima legibilidad */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Cambiar el fondo a gris claro y el texto a verde al pasar el mouse por encima */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #2E7D32 !important;
+}
+
+/* Muestra la lista de opciones al interactuar con el botón principal */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Ajustes especiales para que la lista no se descuadre en pantallas de teléfonos celulares */
+@media screen and (max-width: 768px) {
+    .dropdown-content {
+        position: relative;
+        box-shadow: none;
+        background-color: #2E7D32; /* En celular se vuelve verde claro para no romper el diseño */
+        width: 100%;
+    }
+    .dropdown-content a {
+        color: #ffffff !important; /* Texto blanco en celulares */
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- ☰ BARRA DE NAVEGACIÓN -->
+    <!-- ☰ BARRA DE NAVEGACIÓN CON MENÚS DESPLEGABLES -->
+    <nav class="navbar">
+        <div class="logo"><a href="#">Basilico Pizzéria</a></div>
+        <a href="javascript:void(0);" class="icon-menu" onclick="toggleMenu()">☰</a>
+        <ul class="nav-menu" id="myNavMenu">
+            <li><a href="#">Főoldal</a></li>
+            <li><a href="pizzák.html">Pizzák</a></li>
+            
+            <!-- 🍕 MENÚ DESPLEGABLE: MENÜ -->
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Menü ▾</a>
+                <div class="dropdown-content">
+                  <a href="tradicionalis.html">Tradicionális Pizzák</a>
+
+                    <a href="#new-york">New York-style Pizza</a>
+                 <a href="uditok.html">Üdítőkínálat</a>
+
+                    <a href="deszertek.html">Desszertek</a>
+                </div>
+            </li>
+            
+            <li><a href="#">Házhozszállítás</a></li>
+            <li><a href="#">Nyitvatartás</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- 🎯 HERO SECCIÓN -->
+    <section class="hero">
+        <h1>Kövön sütött tradicionális pizzák</h1>
+        <h2>Rendelésfelvétel mindennap 20:30-ig!</h2>
+        <a href="#" class="btn-menu">Éhes vagyok, mutasd a kínálatot</a>
+    </section>
+
+    <!-- 📦 SECCIÓN INFORMACIÓN DE ENTREGA -->
+    <section class="white-box">
+        <div class="container">
+            <h2>Élvezd a pizzád otthon is</h2>
+            <p>Friss, adalékanyagmentes és magas minőségű olasz alapanyagokból készítve.</p>
+            <div class="features">
+                <div class="feature-item">
+                    <h3>Házhozszállítás</h3>
+                    <p>Gyors és megbízható meleg ételkiszállítás egyenesen az Ön kapujáig.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Személyes átvétel</h3>
+                    <p>Rendeljen online az oldalon keresztül, és vegye át sorban állás nélkül.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>New York-style</h3>
+                    <p>Hatalmas, ropogós szélű 45-50 cm-es pizzák szeletenként is kaphatók.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 👨‍🍳 SECCIÓN HISTORIA DEL CHEF -->
+    <section class="chef-section">
+        <div class="chef-text">
+            <h2>Tradíció és Szenvedély</h2>
+            <p>Kézzel nyújtott pizzáinkat a pizza hazájában használt olasz módszerek szerint sütjük a 400-500 fokos kemencében. Az ételek elkészítéséhez kizárólag prémium minőségű alapanyagokat használunk, adalékanyagok nélkül. Kínálatunkban a vegetáriánus étrendet követők is találnak kedvükre való finomságot.</p>
+        </div>
+    </section>
+
+    <!-- 👣 PIE DE PÁGINA Y CONTACTO -->
+    <footer>
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-box">
+                    <h4>📍 Címünk</h4>
+                    <p>Budapest, Kőfaragó u. 15, 1085</p>
+                </div>
+                <div class="contact-box">
+                    <h4>📞 Telefon</h4>
+                    <p>(06 1) 781 0538</p>
+                </div>
+                <div class="contact-box">
+                    <h4>🕒 Nyitvatartás</h4>
+                    <p>Hétfő - Szombat: 12:00 - 21:00</p>
+                </div>
+            </div>
+            <p>&copy; 2026 Basilico Pizzéria. Minden jog fenntartva. | Impresszum | Adatkezelés</p>
+        </div>
+    </footer>
+
+    <!-- 🛠️ SCRIPT MENÚ MÓVIL -->
+    <script>
+    function toggleMenu() {
+        var menu = document.getElementById("myNavMenu");
+        if (menu.className === "nav-menu") {
+            menu.className += " responsive";
+        } else {
+            menu.className = "nav-menu";
+        }
+    }
+    </script>
+
+</body>
+</html>
