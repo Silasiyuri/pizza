@@ -128,59 +128,58 @@
         .dropdown-content a:hover { background-color: #f1f1f1; color: #2E7D32 !important; }
         .dropdown:hover .dropdown-content { display: block; }
 
-       /* 💻 CONFIGURACIÓN PARA COMPUTADORAS (Pantallas grandes) */
-.features { 
+      /* 💻 VISTA PARA COMPUTADORAS (Pantallas grandes) */
+.icon-menu { 
+    display: none !important; /* Esconde las tres líneas en PC */
+}
+.nav-menu { 
     display: flex !important; 
     flex-direction: row !important; 
-    flex-wrap: wrap !important;        /* Permite que si no caben, bajen a la siguiente fila */
-    justify-content: center !important; 
-    gap: 40px !important;              /* Separación elegante entre las pizzas */
-    margin-top: 40px; 
-    width: 100%; 
-    box-sizing: border-box; 
-}
-
-.feature-item { 
-    width: 350px !important;           /* Tamaño ideal para computadoras */
-    height: auto !important;           /* Altura flexible para que no se corte el texto h3 o p */
-    min-height: 420px !important;      /* Mantiene todas las tarjetas con un piso visual idéntico */
-    flex: none !important; 
-    display: flex !important; 
-    flex-direction: column !important; 
-    justify-content: space-between !important; /* Distribuye el botón abajo y los textos arriba uniformes */
     align-items: center !important; 
-    padding: 25px !important; 
-    background: #f9f9f9; 
-    border-radius: 18px; 
-    box-sizing: border-box; 
-    border: 1px solid #ddd; 
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06); 
 }
+.nav-menu li { display: inline-block !important; }
+.nav-menu li a { display: block !important; color: white !important; padding: 10px 15px !important; text-decoration: none !important; font-weight: bold !important; white-space: nowrap !important; }
 
-/* Estilos de apoyo para tus imágenes */
-.pizza-img {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-    border-radius: 12px;
-    object-fit: cover;
-}
-
-
-/* 📱 CONFIGURACIÓN PARA CELULARES (Dentro de tu @media screen and (max-width: 768px)) */
+/* 📱 VISTA PARA CELULARES Y PANTALLAS PEQUEÑAS */
 @media screen and (max-width: 768px) {
-    .features { 
-        flex-direction: column !important; /* Fuerza una sola fila vertical */
-        align-items: center !important;    /* Centra la hilera en la pantalla */
-        gap: 30px !important;              /* Espacio cómodo entre pizza y pizza */
+    .icon-menu { 
+        display: block !important; /* Muestra las tres líneas obligatoriamente */
     }
 
-    .feature-item { 
-        width: 90% !important;             /* Se estira ocupando casi toda la pantalla del cel */
-        max-width: 360px !important;       /* Evita que se deforme en pantallas de celulares grandes */
-        height: auto !important;           /* Quita el límite cuadrado para que quepa todo el texto */
-        aspect-ratio: auto !important;     /* Rompe la propiedad cuadrada vieja */
-        padding: 20px !important;          /* Margen interior adaptado al celular */
+    /* Oculta por completo las letras amontonadas al cargar la página */
+    #myNavMenu.nav-menu { 
+        display: none !important; 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        position: absolute !important; 
+        top: 100% !important; /* Se despliega justo abajo de la barra verde */
+        left: 0 !important; 
+        background-color: #1B5E20 !important; /* Fondo verde oscuro unificado */
+        z-index: 999999 !important; /* Se posiciona por encima de los textos gigantes */
+        padding: 15px 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Esta clase se activa con JavaScript al tocar el icono con el dedo */
+    #myNavMenu.nav-menu.responsive { 
+        display: flex !important; 
+    }
+
+    #myNavMenu.nav-menu li { 
+        text-align: center !important; 
+        width: 100% !important; 
+        display: block !important;
+    }
+    #myNavMenu.nav-menu li a { 
+        display: block !important;
+        padding: 15px 0 !important; 
+        color: white !important;
+        font-size: 18px !important;
+    }
+    .dropdown-content {
+        position: relative !important;
+        background-color: #2E7D32 !important;
+        width: 100% !important;
     }
 }
 
