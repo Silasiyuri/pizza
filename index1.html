@@ -128,11 +128,18 @@
         .dropdown-content a:hover { background-color: #f1f1f1; color: #2E7D32 !important; }
         .dropdown:hover .dropdown-content { display: block; }
 
-      /* 💻 VISTA PARA COMPUTADORAS (Pantallas grandes) */
+      /* ========================================================
+   🛠️ CONTROL RESPONSIVE PARA TU BARRA DE NAVEGACIÓN
+   ======================================================== */
+
+/* 💻 Vista para Computadoras (Alineación normal) */
 .icon-menu { 
     display: none !important; /* Esconde las tres líneas en PC */
 }
 .nav-menu { 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
     display: flex !important; 
     flex-direction: row !important; 
     align-items: center !important; 
@@ -140,46 +147,63 @@
 .nav-menu li { display: inline-block !important; }
 .nav-menu li a { display: block !important; color: white !important; padding: 10px 15px !important; text-decoration: none !important; font-weight: bold !important; white-space: nowrap !important; }
 
-/* 📱 VISTA PARA CELULARES Y PANTALLAS PEQUEÑAS */
+/* 📱 Vista para Celulares y Pantallas Pequeñas */
 @media screen and (max-width: 768px) {
-    .icon-menu { 
-        display: block !important; /* Muestra las tres líneas obligatoriamente */
+    .navbar {
+        position: relative !important; /* Permite posicionar el menú desplegable */
     }
 
-    /* Oculta por completo las letras amontonadas al cargar la página */
-    #myNavMenu.nav-menu { 
+    .icon-menu { 
+        display: block !important; /* Muestra tu botón ☰ obligatoriamente en celular */
+        color: white !important; 
+        font-size: 28px !important; 
+        text-decoration: none !important;
+        cursor: pointer !important;
+    }
+
+    /* 🔒 ESCONDE tus enlaces dentro de las 3 líneas al cargar la página */
+    .nav-menu#navMenu { 
         display: none !important; 
         flex-direction: column !important; 
         width: 100% !important; 
         position: absolute !important; 
-        top: 100% !important; /* Se despliega justo abajo de la barra verde */
+        top: 100% !important; /* Se despliega exactamente debajo de la barra verde */
         left: 0 !important; 
-        background-color: #1B5E20 !important; /* Fondo verde oscuro unificado */
-        z-index: 999999 !important; /* Se posiciona por encima de los textos gigantes */
+        background-color: #1B5E20 !important; /* Mismo fondo verde oscuro */
+        z-index: 99999 !important; /* Pasa por encima de cualquier otro elemento de la web */
         padding: 15px 0 !important;
         margin: 0 !important;
     }
     
-    /* Esta clase se activa con JavaScript al tocar el icono con el dedo */
-    #myNavMenu.nav-menu.responsive { 
+    /* 🔓 MUESTRA el menú hacia abajo cuando le das clic con el dedo */
+    .nav-menu#navMenu.responsive { 
         display: flex !important; 
     }
 
-    #myNavMenu.nav-menu li { 
+    /* Estira y centra las opciones para que sean fáciles de tocar */
+    .nav-menu#navMenu li { 
         text-align: center !important; 
         width: 100% !important; 
         display: block !important;
     }
-    #myNavMenu.nav-menu li a { 
+    .nav-menu#navMenu li a { 
         display: block !important;
         padding: 15px 0 !important; 
         color: white !important;
         font-size: 18px !important;
     }
+
+    /* Adapta tu menú desplegable interno (dropdown) al móvil */
     .dropdown-content {
         position: relative !important;
-        background-color: #2E7D32 !important;
+        background-color: #2E7D32 !important; /* Un verde un poco más claro para distinguir */
         width: 100% !important;
+        box-shadow: none !important;
+    }
+    .dropdown-content a {
+        color: white !important;
+        text-align: center !important;
+        padding: 12px 0 !important;
     }
 }
 
@@ -380,6 +404,32 @@
         }
     }
 </script>
+     <!-- ... tu código anterior (secciones, footer, etc.) ... -->
+
+    <!-- 🌟 DETECTOR DE CLIC TÁCTIL PARA TU BOTÓN HAMBURGESA 🌟 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Buscamos tu botón (id="hamburgerBtn") y tu lista (id="navMenu")
+            const boton = document.getElementById("hamburgerBtn");
+            const menu = document.getElementById("navMenu");
+
+            if (boton && menu) {
+                function conmutarMenu(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Enciende o apaga la clase responsive
+                    menu.classList.toggle("responsive");
+                }
+
+                // Registra la pulsación tanto para mouse como para el dedo en móviles
+                boton.addEventListener("click", conmutarMenu);
+                boton.addEventListener("touchstart", conmutarMenu, { passive: false });
+            }
+        });
+    </script>
+
+
+
 
 
 </body>
