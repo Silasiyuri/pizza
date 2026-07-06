@@ -206,6 +206,46 @@
         padding: 12px 0 !important;
     }
 }
+/* ========================================================
+   🍕 ADAPTACIÓN DE TARJETAS DE PIZZAS PARA CELULARES
+   ======================================================== */
+
+@media screen and (max-width: 768px) {
+    /* 1. Cambia el contenedor de horizontal a vertical */
+    .features { 
+        display: flex !important;
+        flex-direction: column !important; /* Pone las pizzas una debajo de la otra */
+        align-items: center !important;    /* Las centra perfectamente en la pantalla */
+        gap: 35px !important;              /* Añade un espacio cómodo entre cada pizza */
+        width: 100% !important;
+        padding: 0 !important;
+        margin-top: 30px !important;
+    }
+
+    /* 2. Hace que cada tarjeta de pizza sea flexible y no se rompa */
+    .feature-item { 
+        width: 90% !important;             /* Ocupa el ancho de la pantalla del celular */
+        max-width: 360px !important;       /* Evita que se deforme en celulares muy grandes */
+        height: auto !important;           /* Rompe el tamaño cuadrado rígido anterior */
+        min-height: auto !important;       /* Permite que crezca según el texto */
+        aspect-ratio: auto !important;     /* Elimina cualquier proporción cuadrada vieja */
+        padding: 25px 20px !important;     /* Margen interno para que respire el contenido */
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* 3. Asegura que las imágenes de las pizzas no se desborden */
+    .pizza-img {
+        width: 100% !important;
+        max-width: 240px !important;       /* Tamaño ideal para la pantalla del móvil */
+        height: auto !important;
+        border-radius: 12px !important;
+        object-fit: cover !important;
+        margin-bottom: 15px !important;
+    }
+}
 
 
    </style>
