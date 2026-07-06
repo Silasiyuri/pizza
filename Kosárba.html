@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basilico Pizzéria | Kosár Tartalma</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Arial', sans-serif; background-color: #2E7D32; color: #ffffff; }
+        .navbar { background-color: #1B5E20; display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 15px 20px; box-sizing: border-box; width: 100%; }
+        .logo a { color: white; text-decoration: none; font-weight: bold; font-size: 24px; }
+        .kosar-section { background-color: #ffffff; color: #333333; padding: 50px 20px; min-height: 65vh; text-align: center; }
+        .kosar-box { max-width: 600px; margin: 0 auto; background: #f9f9f9; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: left; border: 1px solid #ddd; }
+        .kosar-box h2 { color: #1B5E20; margin-top: 0; text-align: center; border-bottom: 2px solid #2E7D32; padding-bottom: 10px; }
+        .kosar-lista { list-style: none; padding: 0; margin: 15px 0; font-size: 16px; color: #333; }
+        .kosar-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed #ccc; align-items: center; }
+        .btn-torol { background: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .campo { margin-bottom: 18px; }
+        label { display: block; font-weight: bold; margin-bottom: 6px; color: #1B5E20; }
+        input, textarea { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; }
+        .btn-submit-safari { display: block !important; width: 100%; padding: 14px 0; background: #ff9800; color: white !important; text-align: center; font-size: 18px; font-weight: bold; border-radius: 30px; border: none; cursor: pointer; margin-top: 15px; box-sizing: border-box; }
+        .btn-submit-safari:hover { background: #e68a00; }
+
+/* 💻 ESTILOS PARA COMPUTADORAS (Se ve normal) */
+.icon-menu { 
+    display: none !important; /* Esconde las 3 líneas en la computadora */
+    color: white;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.nav-menu { 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    display: flex !important; 
+    flex-direction: row !important;     
+    align-items: center !important;     
+}
+.nav-menu li a { display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; }
+
+/* 📱 ESTILOS PARA CELULARES (¡Aquí ocurre la magia!) */
+@media screen and (max-width: 768px) {
+    .icon-menu { 
+        display: block !important; /* Muestra el botón ☰ solo en celular */
+    }
+
+    .nav-menu { 
+        display: none !important; /* ESCONDE las palabras dentro de las 3 líneas por defecto */
+        flex-direction: column !important; 
+        width: 100% !important; 
+        position: absolute !important; 
+        top: 60px !important; 
+        left: 0 !important; 
+        background-color: #1B5E20 !important; 
+        z-index: 9999 !important; 
+        padding: 10px 0 !important;
+    }
+    
+    /* Esta clase se activa con JavaScript al tocar las líneas */
+    .nav-menu.responsive { 
+        display: flex !important; 
+    }
+
+    .nav-menu li { text-align: center !important; width: 100% !important; display: block !important; }
+    .nav-menu li a { padding: 15px 0 !important; }
+}/* 📱 CONFIGURACIÓN PARA CELULARES */
+@media screen and (max-width: 768px) {
+    .icon-menu { 
+        display: block !important; /* Muestra el ícono de las tres líneas */
+    }
+
+    .nav-menu { 
+        display: none !important; /* ESCONDE por defecto las palabras dentro de las tres líneas */
+        flex-direction: column !important; 
+        width: 100% !important; 
+        position: absolute !important; 
+        top: 100% !important; 
+        left: 0 !important; 
+        background-color: #1B5E20 !important; 
+        z-index: 999999 !important; 
+        padding: 10px 0 !important;
+    }
+    
+    /* Esta clase la activa JavaScript al tocar las líneas con el dedo */
+    .nav-menu.responsive { 
+        display: flex !important; 
+    }
+
+    .nav-menu li { text-align: center !important; width: 100% !important; display: block !important; }
+    .nav-menu li a { display: block !important; padding: 15px 0 !important; color: white !important; text-decoration: none !important; font-weight: bold !important; }
+}
+
+/* 💻 CONFIGURACIÓN COMPUTADORA */
+@media screen and (min-width: 769px) {
+    .icon-menu { display: none !important; }
+    .nav-menu { display: flex !important; flex-direction: row !important; align-items: center !important; }
+    .nav-menu li { display: inline-block !important; }
+    .nav-menu li a { display: block !important; color: white !important; padding: 10px 15px !important; text-decoration: none !important; font-weight: bold !important; white-space: nowrap !important; }
+}
+
+
+
+    </style>
+</head>
+<body>   <body>    <!-- ☰ BARRA DE NAVEGACIÓN EN UNA SOLA FILA PERFECTA -->
+
+    <nav class="navbar" style="background-color: #1B5E20; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; box-sizing: border-box; width: 100%; position: relative; z-index: 99999;">
+        
+        <!-- LOGO FIJADO A LA IZQUIERDA -->
+        <div class="logo" style="margin-right: auto; padding: 0;">
+            <a href="index.html" style="color: white; text-decoration: none; font-weight: bold; font-size: 24px; white-space: nowrap;">Basilico Pizzéria</a>
+        </div>
+        
+        <!-- ☰ BOTÓN HAMBURGUESA (¡Agregado aquí con su ID!) -->
+        <a href="javascript:void(0);" class="icon-menu" id="hamburgerBtn" style="color: white; font-size: 30px; text-decoration: none; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent;">☰</a>
+
+        <!-- ELEMENTOS DEL MENÚ SIN ESTILOS INLINE CONFLICTIVOS -->
+        <ul class="nav-menu" id="navMenu" style="margin: 0; padding: 0; list-style: none;">
+            <li><a href="Főoldal.html">Főoldal</a></li>
+            <li><a href="pizzák.html">Pizzák</a></li>
+            <li><a href="#">🛒 Kosár (<span id="cart-count">0</span>)</a></li>
+        </ul>
+    </nav>
+
+
+
+
+    <section class="kosar-section">
+        <div class="kosar-box">
+            <h2>🛒 Kosár Tartalma</h2>
+            <ul id="lista-kosar" class="kosar-lista"></ul>
+            <hr style="border: 0; border-top: 1px solid #ddd; margin: 25px 0;">
+            
+            <h2>🍕 Rendelés Leadása</h2>
+            <div class="campo">
+                <label>Vásárló Neve (Nombre):</label>
+                <input type="text" id="nombre" placeholder="Írd be a neved">
+            </div>
+            <div class="campo">
+                <label>Szállítási Cím (Dirección):</label>
+                <input type="text" id="direccion" placeholder="Írd be a címed">
+            </div>
+            <div class="campo">
+                <label>Kosár részletei:</label>
+                <textarea id="detalle" rows="4" readonly></textarea>
+            </div>
+            
+            <!-- 🌟 BOTÓN CON ACCIÓN DIRECTA EN TIEMPO REAL -->
+            <button onclick="enviarPedidoCocina()" class="btn-submit-safari">Rendelés elküldése</button>
+        </div>
+    </section>
+
+    <script>
+        function renderizarCarrito() {
+            let car = JSON.parse(localStorage.getItem('pizzeria_cart')) || [];
+            const contenedorUl = document.getElementById('lista-kosar');
+            const cuadroFormulario = document.getElementById('detalle');
+            if (car.length === 0) {
+                contenedorUl.innerHTML = '<li style="text-align:center; color:#666; padding: 15px 0;">A kosár üres.</li>';
+                cuadroFormulario.value = '';
+                return;
+            }
+            contenedorUl.innerHTML = '';
+            car.forEach((pizza, i) => {
+                contenedorUl.innerHTML += `<li class="kosar-item"><span>🍕 1x ${pizza}</span><button type="button" class="btn-torol" onclick="eliminarDelCarrito(${i})">Törlés</button></li>`;
+            });
+            cuadroFormulario.value = car.map(p => "1x " + p).join(", ");
+        }
+
+        function eliminarDelCarrito(i) {
+            let car = JSON.parse(localStorage.getItem('pizzeria_cart')) || [];
+            car.splice(i, 1);
+            localStorage.setItem('pizzeria_cart', JSON.stringify(car));
+            renderizarCarrito();
+        }
+
+        // 🧠 FUNCIÓN INMUNE A BLOQUEOS DE REDIRECCIÓN
+        function enviarPedidoCocina() {
+            const cliente = document.getElementById('nombre').value.trim();
+            const dir = document.getElementById('direccion').value.trim();
+            const platos = document.getElementById('detalle').value;
+            let car = JSON.parse(localStorage.getItem('pizzeria_cart')) || [];
+
+            if (car.length === 0) { alert('Hiba: A kosár üres!'); return; }
+            if (cliente === "" || dir === "") { alert('Hiba: Kérjük, töltsd ki a neved és a címed!'); return; }
+            
+            // Borramos la memoria antes de saltar
+            localStorage.removeItem('pizzeria_cart');
+            
+            alert('A rendelést sikeresen elküldtük !');
+            
+            // 🌟 Armamos la URL con el hashtag justo al hacer el clic físico y forzamos el salto
+            const datosHashtag = `#${encodeURIComponent(cliente)}|${encodeURIComponent(dir)}|${encodeURIComponent(platos)}`;
+            window.location.href = "panel.html" + datosHashtag;
+        }
+
+        window.addEventListener('DOMContentLoaded', renderizarCarrito);
+    </script>
+    <!-- 👣 PIE DE PÁGINA ACTUALIZADO Y CORREGIDO SIN REPETICIONES -->
+    <footer style="background-color: #114014; padding: 40px 20px; text-align: center; font-size: 15px; color: white; width: 100%; box-sizing: border-box; font-family: 'Arial', sans-serif;">
+        <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+            
+            <!-- 📦 Contenedor horizontal de tres columnas proporcionales -->
+            <div style="display: flex !important; flex-direction: row !important; justify-content: space-around !important; flex-wrap: wrap !important; gap: 30px !important; margin-bottom: 30px; text-align: center;">
+                
+                <!-- 📍 Columna 1: Dirección -->
+                <div style="min-width: 250px; flex: 1;">
+                    <h4 style="color: #A5D6A7; margin: 0 0 10px 0; font-size: 18px; font-weight: bold;">📍 Címünk</h4>
+                    <p style="margin: 0; line-height: 1.5; font-size: 15px;">Budapest, Kőfaragó u. 15, 1085</p>
+                </div>
+                
+                <!-- 📞 Columna 2: Teléfono -->
+                <div style="min-width: 250px; flex: 1;">
+                    <h4 style="color: #A5D6A7; margin: 0 0 10px 0; font-size: 18px; font-weight: bold;">📞 Telefon</h4>
+                    <p style="margin: 0; line-height: 1.5; font-size: 15px;">(06 1) 781 0538</p>
+                </div>
+                
+                <!-- 🕒 Columna 3: Horario -->
+                <div style="min-width: 250px; flex: 1;">
+                    <h4 style="color: #A5D6A7; margin: 0 0 10px 0; font-size: 18px; font-weight: bold;">🕒 Nyitvatartás</h4>
+                    <p style="margin: 0; line-height: 1.5; font-size: 15px;">Hétfő - Szombat: 12:00 - 21:00</p>
+                </div>
+
+            </div>
+            
+            <!-- ⚖️ Renglón de Enlaces Legales y Copyright -->
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 14px; opacity: 0.9;">
+                <p style="margin: 5px 0;">&copy; 2026 Basilico Pizzéria. Minden jog fenntartva. | <a href="#" style="color: #A5D6A7; text-decoration: underline; margin: 0 5px; font-weight: bold;">Impresszum</a> | <a href="#" style="color: #A5D6A7; text-decoration: underline; margin: 0 5px; font-weight: bold;">Adatkezelés</a></p>
+            </div>
+
+        </div>
+    </footer>
+<script>
+    const boton = document.getElementById('hamburgerBtn');
+    const menu = document.getElementById('navMenu');
+
+    boton.addEventListener('click', function() {
+        menu.classList.toggle('responsive');
+    });
+<<script>
+    // Conectamos el botón físico con el menú
+    const botonHamburguesa = document.getElementById('hamburgerBtn');
+    const menuNavegacion = document.getElementById('navMenu');
+
+    // Al hacer clic, añade o quita la clase "responsive" que muestra el menú
+    botonHamburguesa.addEventListener('click', function() {
+        menuNavegacion.classList.toggle('responsive');
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const boton = document.getElementById("hamburgerBtn");
+        const menu = document.getElementById("navMenu");
+
+        if (boton && menu) {
+            function abrirMenu(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                menu.classList.toggle("responsive");
+            }
+            boton.addEventListener("click", abrirMenu);
+            boton.addEventListener("touchstart", abrirMenu, { passive: false });
+        }
+    });
+</script>
+
+
+
+</body>
+</html>
