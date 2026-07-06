@@ -142,34 +142,64 @@
     font-weight: bold;
 }
 
-/* 📱 RESPONSIVE: CELULARES */
+/* 💻 CONFIGURACIÓN COMPUTADORA */
+.icon-menu { 
+    display: none !important; 
+}
+.nav-menu { 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    display: flex !important; 
+    flex-direction: row !important; 
+    align-items: center !important; 
+}
+.nav-menu li { display: inline-block; }
+.nav-menu li a { display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; white-space: nowrap; }
+
+/* 📱 CONFIGURACIÓN EXCLUSIVA PARA CELULARES */
 @media screen and (max-width: 768px) {
-    .nav-menu { 
-        display: none !important; /* Añadido !important para ganarle al de arriba */
-        flex-direction: column !important; 
-        width: 100%; 
-        position: absolute; 
-        top: 58px; 
-        left: 0; 
-        background-color: #1B5E20; 
-        z-index: 99; 
+    .icon-menu { 
+        display: block !important; /* Muestra las tres líneas */
     }
     
-    /* Esta es la clase que se activará al tocar las tres líneas */
+    .nav-menu { 
+        display: none !important; /* Esconde las palabras estrictamente al cargar */
+        flex-direction: column !important; 
+        width: 100% !important; 
+        position: absolute !important; 
+        top: 100% !important; /* Se pega justo abajo de la barra verde */
+        left: 0 !important; 
+        background-color: #1B5E20 !important; 
+        z-index: 999999 !important; /* Capa por encima de toda la web */
+        padding: 15px 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Esta clase ESTRELLA se activa con el clic de abajo */
     .nav-menu.responsive { 
         display: flex !important; 
     }
-
-    .nav-menu li { text-align: center; width: 100%; }
-    .icon-menu { display: block; } /* Muestra las tres líneas */
     
-    /* El resto de tus estilos del responsive se quedan exactamente igual abajo... */
-    .hero h1 { font-size: 32px; }
-    .features { flex-direction: column !important; align-items: center !important; gap: 25px !important; }
-    .feature-item { width: 90% !important; height: auto !important; aspect-ratio: 1 / 1 !important; padding: 25px !important; }
-    .contact-grid { flex-direction: column; gap: 20px; }
-    .dropdown-content { position: relative; box-shadow: none; background-color: #2E7D32; width: 100%; }
-    .dropdown-content a { color: #ffffff !important; text-align: center; padding: 10px 0; }
+    .nav-menu li { 
+        text-align: center !important; 
+        width: 100% !important; 
+        display: block !important;
+    }
+    .nav-menu li a { 
+        padding: 15px 0 !important; 
+        font-size: 18px !important;
+    }
+    .dropdown-content {
+        position: relative !important;
+        background-color: #2E7D32 !important;
+        width: 100% !important;
+        box-shadow: none !important;
+    }
+    .dropdown-content a {
+        color: white !important;
+        text-align: center !important;
+    }
 }
 
 
@@ -178,38 +208,36 @@
 <body>
 
        <!-- ☰ BARRA DE NAVEGACIÓN REESTRUCTURADA (LOGO A LA IZQUIERDA) -->
-    <nav class="navbar" style="display: flex !important; justify-content: space-between !important; align-items: center !important; background-color: #1B5E20; padding: 15px 20px; position: relative; box-sizing: border-box;">
-        
-        <!-- LOGO FIJO A LA IZQUIERDA -->
-        <div class="logo" style="margin-right: auto !important; padding: 0;">
-            <a href="index.html" style="color: white; text-decoration: none; font-weight: bold; font-size: 24px; white-space: nowrap;">Basilico Pizzéria</a>
-        </div>
-        
-        <!-- BOTÓN HAMBURGUESA PARA CELULARES -->
-       <a href="javascript:void(0);" class="icon-menu" id="hamburgerBtn">&#9776;</a>
+<nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; background-color: #1B5E20; padding: 15px 20px; position: relative; box-sizing: border-box; z-index: 99999;">
+    
+    <!-- LOGO FIJO A LA IZQUIERDA -->
+    <div class="logo" style="margin-right: auto; padding: 0;">
+        <a href="index.html" style="color: white; text-decoration: none; font-weight: bold; font-size: 24px; white-space: nowrap;">Basilico Pizzéria</a>
+    </div>
+    
+    <!-- BOTÓN HAMBURGUESA PARA CELULARES -->
+    <a href="javascript:void(0);" class="icon-menu" id="hamburgerBtn" style="color: white; font-size: 30px; text-decoration: none; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent;">☰</a>
 
-        <!-- MENÚ DE ENLACES ALINEADO A LA DERECHA -->
-       
-
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="index.html">Főoldal</a></li>
-            <li><a href="pizzák.html">Pizzák</a></li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">Menü ▾</a>
-                <div class="dropdown-content">
-                    <a href="tradicionalis.html">Tradicionális Pizzák</a>
-                    <a href="index.html#new-york">New York-style Pizza</a>
-                    <a href="uditok.html">Üdítőkínálat</a>
-                    <a href="deszertek.html">Desszertek</a>
-                </div>
-            </li>
-            
-            <!-- 🕒 NYITVATARTÁS CON VENTANA EMERGENTE -->
-            <li><a href="javascript:void(0);" onclick="document.getElementById('nyitvaModal').showModal();">Nyitvatartás ▾</a></li>
-            
-            <li><a href="Kosárba.html">🛒 Kosár (<span id="cart-count">0</span>)</a></li>
-        </ul>
-    </nav>
+    <!-- MENÚ DE ENLACES ALINEADO A LA DERECHA -->
+    <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Főoldal</a></li>
+        <li><a href="pizzák.html">Pizzák</a></li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Menü ▾</a>
+            <div class="dropdown-content">
+                <a href="tradicionalis.html">Tradicionális Pizzák</a>
+                <a href="index.html#new-york">New York-style Pizza</a>
+                <a href="uditok.html">Üdítőkínálat</a>
+                <a href="deszertek.html">Desszertek</a>
+            </div>
+        </li>
+        
+        <!-- 🕒 NYITVATARTÁS CON VENTANA EMERGENTE -->
+        <li><a href="javascript:void(0);" onclick="document.getElementById('nyitvaModal').showModal();">Nyitvatartás ▾</a></li>
+        
+        <li><a href="Kosárba.html">🛒 Kosár (<span id="cart-count">0</span>)</a></li>
+    </ul>
+</nav>
 
     <!-- 🕒 VENTANA MODAL EMERGENTE DE NYITVATARTÁS -->
     <dialog id="nyitvaModal" style="border: none; border-radius: 12px; padding: 25px; max-width: 90vw; width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); font-family: Arial, sans-serif; box-sizing: border-box; background-color: #ffffff; color: #333333; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100000;">
@@ -346,6 +374,24 @@
 
     boton.addEventListener('click', function() {
         menu.classList.toggle('responsive');
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const boton = document.getElementById("hamburgerBtn");
+        const menu = document.getElementById("navMenu");
+
+        if (boton && menu) {
+            function toggleMenu(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                menu.classList.toggle("responsive");
+            }
+
+            // Detecta tanto el clic de mouse como el toque del dedo en celular
+            boton.addEventListener("click", toggleMenu);
+            boton.addEventListener("touchstart", toggleMenu, { passive: false });
+        }
     });
 </script>
 
