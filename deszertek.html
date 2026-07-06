@@ -208,6 +208,73 @@
         text-align: center !important;
     }
 }
+/* 🎨 ESTILO DEL BOTÓN DE TELÉFONO */
+.btn-telefono {
+    display: inline-block;
+    background-color: #ff9800; /* Color naranja Basilico */
+    color: white !important;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, transform 0.2s;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Efecto al pasar el mouse por encima en PC */
+.btn-telefono:hover {
+    background-color: #e68a00;
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
+}
+
+/* Ajuste opcional para que en celulares ocupe casi todo el ancho */
+@media screen and (max-width: 768px) {
+    .btn-telefono {
+        display: block;
+        width: 85%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/* 🎨 ESTILO DEL BOTÓN DE CORREO */
+.btn-correo {
+    display: inline-block;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #1B5E20 !important; /* Texto verde oscuro de tu marca */
+    border: 2px solid #1B5E20; /* Borde verde */
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Efecto al pasar el mouse por encima en PC */
+.btn-correo:hover {
+    background-color: #1B5E20; /* Se invierten los colores */
+    color: #ffffff !important;
+}
+
+/* Ajuste automático para pantallas de celulares */
+@media screen and (max-width: 768px) {
+    .btn-correo {
+        display: block;
+        width: 85%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
     </style>
 </head>
@@ -239,7 +306,7 @@
             </li>
             
             <!-- 🕒 NYITVATARTÁS CON VENTANA EMERGENTE -->
-            <li><a href="javascript:void(0);" onclick="document.getElementById('nyitvaModal').showModal();">Nyitvatartás ▾</a></li>
+            <li><a href="javascript:void(0);" onclick="document.getElementById('nyitvaModal').showModal();">Kapcsalat  ▾</a></li>
             
             <li><a href="Kosárba.html">🛒 Kosár (<span id="cart-count">0</span>)</a></li>
         </ul>
@@ -252,10 +319,16 @@
         </div>
         <span style="display:block; padding-bottom: 10px; color: #2E7D32; font-weight: bold; font-size: 18px; border-bottom: 2px solid #2E7D32; text-align: center; margin-bottom: 15px;">Nyitvatartási Idő</span>
         <div style="font-size: 15px; line-height: 1.8;">
-            <p style="margin: 5px 0; display: flex; justify-content: space-between;"><strong>Hétfő - Péntek:</strong> <span>11:30 - 21:00</span></p>
-            <p style="margin: 5px 0; display: flex; justify-content: space-between;"><strong>Szombat:</strong> <span>12:00 - 22:00</span></p>
-            <p style="margin: 5px 0; display: flex; justify-content: space-between;"><strong>Vasárnap:</strong> <span>12:00 - 22:00</span></p>
-            <small style="color: #2E7D32; display: block; text-align: center; margin-top: 10px; font-weight: bold;">Rendelésfelvétel: 20:30-ig</small>
+            <!-- Botón de llamada directa -->
+<a href="tel:+3617810538" class="btn-telefono">
+    📞 Hívás most: (06 1) 781 0538
+</a>
+<!-- Botón de correo electrónico directo -->
+<a href="mailto:info@basilicopizzeria.hu" class="btn-correo">
+    ✉️ Email küldése (Enviar Correo)
+</a>
+
+            <small style="color: #2E7D32; display: block; text-align: center; margin-top: 10px; font-weight: bold;">Rendelésfelvétel: 18:00-04:00-ig</small>
         </div>
         <button onclick="document.getElementById('nyitvaModal').close();" style="width: 100%; background-color: #2E7D32; color: white; border: none; padding: 12px; border-radius: 30px; font-weight: bold; margin-top: 20px; cursor: pointer; font-size: 15px; transition: 0.2s;">Bezárás</button>
     </dialog>
