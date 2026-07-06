@@ -17,7 +17,7 @@
     display: flex !important;            /* Pone los enlaces en línea horizontal */
     flex-direction: row !important;     /* Fuerza la hilera de opciones */
     align-items: center !important;     /* Centra las palabras */
- }
+}
 
         .nav-menu { list-style: none; margin: 0; padding: 0; display: flex; }
         .nav-menu li a { display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; }
@@ -206,7 +206,7 @@
 </head>
 <body>
 
-    <!-- ☰ BARRA DE NAVEGACIÓN REESTRUCTURADA (LOGO A LA IZQUIERDA) -->
+     <!-- ☰ BARRA DE NAVEGACIÓN REESTRUCTURADA (LOGO A LA IZQUIERDA) -->
 <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; background-color: #1B5E20; padding: 15px 20px; position: relative; box-sizing: border-box; z-index: 99999;">
     
     <!-- LOGO FIJO A LA IZQUIERDA -->
@@ -215,29 +215,28 @@
     </div>
     
     <!-- BOTÓN HAMBURGUESA PARA CELULARES -->
-    <a href="javascript:void(0);" class="icon-menu" onclick="toggleMenu()" style="color: white; font-size: 28px; text-decoration: none; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent;">☰</a>
-    
-    <!-- MENÚ DE ENLACES CON EL ID CORRECTO Y LINKS REPARADOS -->
-    <ul class="nav-menu" id="myNavMenu">
-        <li><a href="index.html">Főoldal</a></li> <!-- CORREGIDO: index.html en vez de Főoldal.html -->
-         <li><a href="pizzák.html">Pizzák</a></li> <!-- COINCIDE PERFECTO con tu archivo -->
+    <a href="javascript:void(0);" class="icon-menu" id="hamburgerBtn" style="color: white; font-size: 30px; text-decoration: none; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent;">☰</a>
+
+    <!-- MENÚ DE ENLACES ALINEADO A LA DERECHA -->
+    <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Főoldal</a></li>
+        <li><a href="pizzák.html">Pizzák</a></li>
         <li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn">Menü ▾</a>
             <div class="dropdown-content">
-                <a href="#">Tradicionális Pizzák</a> <!-- Apunta a tu archivo de pizzas -->
+                <a href="tradicionalis.html">Tradicionális Pizzák</a>
                 <a href="index.html#new-york">New York-style Pizza</a>
-                <a href="uditok.html">Üdítőkínálat</a> <!-- COINCIDE PERFECTO con tu archivo -->
-                <a href="deszertek.html">Desszertek</a> <!-- CORREGIDO: deszertek.html en minúsculas -->
+                <a href="uditok.html">Üdítőkínálat</a>
+                <a href="deszertek.html">Desszertek</a>
             </div>
         </li>
         
         <!-- 🕒 NYITVATARTÁS CON VENTANA EMERGENTE -->
         <li><a href="javascript:void(0);" onclick="document.getElementById('nyitvaModal').showModal();">Nyitvatartás ▾</a></li>
         
-        <li><a href="Kosárba.html">🛒 Kosár (<span id="cart-count">0</span>)</a></li> <!-- COINCIDE PERFECTO con tu archivo -->
+        <li><a href="Kosárba.html">🛒 Kosár (<span id="cart-count">0</span>)</a></li>
     </ul>
 </nav>
-
 
     <!-- 🕒 VENTANA MODAL EMERGENTE DE NYITVATARTÁS -->
     <dialog id="nyitvaModal" style="border: none; border-radius: 12px; padding: 25px; max-width: 90vw; width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); font-family: Arial, sans-serif; box-sizing: border-box; background-color: #ffffff; color: #333333; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100000;">
@@ -255,7 +254,7 @@
     </dialog>
 
 
-  <!-- 🎯 HERO SECCIÓN -->
+    <!-- 🎯 HERO SECCIÓN -->
     <section class="hero">
         <h1>Kövön sütött tradicionális pizzák</h1>
         <h2>Rendelésfelvétel mindennap 20:30-ig!</h2>
@@ -404,12 +403,6 @@
             boton.addEventListener("touchstart", toggleMenu, { passive: false });
         }
     });
-</script>
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById("myNavMenu");
-        if (menu) { menu.classList.toggle("responsive"); }
-    }
 </script>
 
 
