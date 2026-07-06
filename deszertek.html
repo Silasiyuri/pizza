@@ -147,18 +147,59 @@
     font-weight: bold;
 }
 
-/* 📱 AJUSTE PARA DISPOSITIVOS MÓVILES (Celulares pequeños) */
-@media screen and (max-width: 480px) {
-    .horario-flotante {
-        bottom: 10px;
-        right: 10px;
-    }
-    .horario-flotante-contenido {
-        width: 220px;
-        padding: 15px;
-    }
+/* 💻 ESTILOS PARA COMPUTADORAS (Se ve normal en línea) */
+.icon-menu { 
+    display: none !important; /* Esconde las tres líneas en PC */
+}
+.nav-menu { 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    display: flex !important; 
+    flex-direction: row !important; 
+    align-items: center !important; 
 }
 
+/* 📱 ESTILOS PARA CELULARES (Pantallas menores a 768px) */
+@media screen and (max-width: 768px) {
+    .icon-menu { 
+        display: block !important; /* Muestra las tres líneas solo en celular */
+    }
+
+    .nav-menu { 
+        display: none !important; /* ESCONDE las palabras dentro de las tres líneas por defecto */
+        flex-direction: column !important; 
+        width: 100% !important; 
+        position: absolute !important; 
+        top: 60px !important; /* Se posiciona justo debajo de tu barra verde */
+        left: 0 !important; 
+        background-color: #1B5E20 !important; 
+        z-index: 999999 !important; /* Capa por encima de toda la web */
+        padding: 10px 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* 🌟 ESTA REGLA MUESTRA EL MENÚ CUANDO DA CLIC CON EL DEDO */
+    .nav-menu.responsive { 
+        display: flex !important; 
+    }
+
+    .nav-menu li { 
+        text-align: center !important; 
+        width: 100% !important; 
+        display: block !important;
+    }
+    .nav-menu li a { 
+        display: block !important;
+        padding: 15px 0 !important; 
+        color: white !important;
+    }
+    .dropdown-content {
+        position: relative !important;
+        background-color: #2E7D32 !important;
+        width: 100% !important;
+    }
+}
 
     </style>
 </head>
@@ -370,6 +411,13 @@
             </div>
         </details>
     </div>
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById("navMenu");
+        // Añade o quita la clase "responsive" al menú
+        menu.classList.toggle("responsive");
+    }
+</script>
 
 </body>
 </html>
