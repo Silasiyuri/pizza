@@ -19,9 +19,59 @@
         input, textarea { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; }
         .btn-submit-safari { display: block !important; width: 100%; padding: 14px 0; background: #ff9800; color: white !important; text-align: center; font-size: 18px; font-weight: bold; border-radius: 30px; border: none; cursor: pointer; margin-top: 15px; box-sizing: border-box; }
         .btn-submit-safari:hover { background: #e68a00; }
+
+/* 💻 ESTILOS PARA COMPUTADORAS (Se ve normal) */
+.icon-menu { 
+    display: none !important; /* Esconde las 3 líneas en la computadora */
+    color: white;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.nav-menu { 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    display: flex !important; 
+    flex-direction: row !important;     
+    align-items: center !important;     
+}
+.nav-menu li a { display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; }
+
+/* 📱 ESTILOS PARA CELULARES (¡Aquí ocurre la magia!) */
+@media screen and (max-width: 768px) {
+    .icon-menu { 
+        display: block !important; /* Muestra el botón ☰ solo en celular */
+    }
+
+    .nav-menu { 
+        display: none !important; /* ESCONDE las palabras dentro de las 3 líneas por defecto */
+        flex-direction: column !important; 
+        width: 100% !important; 
+        position: absolute !important; 
+        top: 60px !important; 
+        left: 0 !important; 
+        background-color: #1B5E20 !important; 
+        z-index: 9999 !important; 
+        padding: 10px 0 !important;
+    }
+    
+    /* Esta clase se activa con JavaScript al tocar las líneas */
+    .nav-menu.responsive { 
+        display: flex !important; 
+    }
+
+    .nav-menu li { text-align: center !important; width: 100% !important; display: block !important; }
+    .nav-menu li a { padding: 15px 0 !important; }
+}
+
+
     </style>
 </head>
 <body>    <!-- ☰ BARRA DE NAVEGACIÓN EN UNA SOLA FILA PERFECTA -->
+
+
     <nav class="navbar" style="background-color: #1B5E20; display: flex !important; flex-direction: row !important; justify-content: space-between !important; align-items: center !important; padding: 15px 20px; box-sizing: border-box; width: 100%; position: relative;">
         
         <!-- LOGO FIJADO A LA IZQUIERDA -->
@@ -29,16 +79,19 @@
             <a href="index.html" style="color: white; text-decoration: none; font-weight: bold; font-size: 24px; white-space: nowrap;">Basilico Pizzéria</a>
         </div>
         
-        <!-- BOTÓN HAMBURGUESA OCULTO EN PC -->
-        <a href="javascript:void(0);" class="icon-menu" onclick="toggleMenu()" style="display: none; color: white; font-size: 28px; text-decoration: none;">☰</a>
+
+
+
         
+
         <!-- ELEMENTOS DEL MENÚ EN UNA SOLA LÍNEA HORIZONTAL A LA DERECHA -->
-        <ul class="nav-menu" id="myNavMenu" style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex !important; flex-direction: row !important; align-items: center !important; gap: 10px !important;">
+        <ul class="nav-menu" id="navMenu">
             <li style="display: inline-block !important;"><a href="Főoldal.html" style="display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; white-space: nowrap;">Főoldal</a></li>
             <li style="display: inline-block !important;"><a href="pizzák.html" style="display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; white-space: nowrap;">Pizzák</a></li>
             <li style="display: inline-block !important;"><a href="#" style="display: block; color: #FFFFFF; padding: 10px 15px; text-decoration: none; font-weight: bold; white-space: nowrap;">🛒 Kosár (<span id="cart-count">0</span>)</a></li>
         </ul>
     </nav>
+
 
 
 
@@ -147,6 +200,23 @@
 
         </div>
     </footer>
+<script>
+    const boton = document.getElementById('hamburgerBtn');
+    const menu = document.getElementById('navMenu');
+
+    boton.addEventListener('click', function() {
+        menu.classList.toggle('responsive');
+    });
+<<script>
+    // Conectamos el botón físico con el menú
+    const botonHamburguesa = document.getElementById('hamburgerBtn');
+    const menuNavegacion = document.getElementById('navMenu');
+
+    // Al hacer clic, añade o quita la clase "responsive" que muestra el menú
+    botonHamburguesa.addEventListener('click', function() {
+        menuNavegacion.classList.toggle('responsive');
+    });
+</script>
 
 
 </body>

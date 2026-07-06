@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basilico Pizzéria | Kövön sütött tradicionális pizzák</title>
     <meta name="description" content="Kövön sütött, kézzel nyújtott tradicionális olasz és New York-style pizzák Budapest szívében. Rendeljen online!">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         /* 🎨 FONDO VERDE Y ESTILOS BASE */
         body { margin: 0; padding: 0; font-family: 'Arial', sans-serif; background-color: #2E7D32; color: #ffffff; }
@@ -140,17 +142,36 @@
     font-weight: bold;
 }
 
-/* 📱 AJUSTE PARA DISPOSITIVOS MÓVILES (Celulares pequeños) */
-@media screen and (max-width: 480px) {
-    .horario-flotante {
-        bottom: 10px;
-        right: 10px;
+/* 📱 RESPONSIVE: CELULARES */
+@media screen and (max-width: 768px) {
+    .nav-menu { 
+        display: none !important; /* Añadido !important para ganarle al de arriba */
+        flex-direction: column !important; 
+        width: 100%; 
+        position: absolute; 
+        top: 58px; 
+        left: 0; 
+        background-color: #1B5E20; 
+        z-index: 99; 
     }
-    .horario-flotante-contenido {
-        width: 220px;
-        padding: 15px;
+    
+    /* Esta es la clase que se activará al tocar las tres líneas */
+    .nav-menu.responsive { 
+        display: flex !important; 
     }
+
+    .nav-menu li { text-align: center; width: 100%; }
+    .icon-menu { display: block; } /* Muestra las tres líneas */
+    
+    /* El resto de tus estilos del responsive se quedan exactamente igual abajo... */
+    .hero h1 { font-size: 32px; }
+    .features { flex-direction: column !important; align-items: center !important; gap: 25px !important; }
+    .feature-item { width: 90% !important; height: auto !important; aspect-ratio: 1 / 1 !important; padding: 25px !important; }
+    .contact-grid { flex-direction: column; gap: 20px; }
+    .dropdown-content { position: relative; box-shadow: none; background-color: #2E7D32; width: 100%; }
+    .dropdown-content a { color: #ffffff !important; text-align: center; padding: 10px 0; }
 }
+
 
     </style>
 </head>
@@ -165,10 +186,11 @@
         </div>
         
         <!-- BOTÓN HAMBURGUESA PARA CELULARES -->
-        <a href="javascript:void(0);" class="icon-menu" onclick="toggleMenu()" style="color: white; font-size: 28px; text-decoration: none;">☰</a>
-        
+       <a href="javascript:void(0);" class="icon-menu" id="hamburgerBtn">&#9776;</a>
+
+
         <!-- MENÚ DE ENLACES ALINEADO A LA DERECHA -->
-        <ul class="nav-menu" id="myNavMenu">
+        <ul class="nav-menu" id="navMenu">
             <li><a href="index.html">Főoldal</a></li>
             <li><a href="pizzák.html">Pizzák</a></li>
             <li class="dropdown">
@@ -308,6 +330,24 @@
             </div>
         </details>
     </div>
+<script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    // Al hacer clic en las 3 líneas, pone o quita la clase 'responsive'
+    hamburgerBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('responsive');
+    });
+</script>
+<script>
+    const boton = document.getElementById('hamburgerBtn');
+    const menu = document.getElementById('navMenu');
+
+    boton.addEventListener('click', function() {
+        menu.classList.toggle('responsive');
+    });
+</script>
+
 
 </body>
 </html>
