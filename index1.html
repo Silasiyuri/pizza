@@ -280,6 +280,40 @@
     }
 }
 
+/* 🎨 ESTILO DEL BOTÓN DE CORREO */
+.btn-correo {
+    display: inline-block;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #1B5E20 !important; /* Texto verde oscuro de tu marca */
+    border: 2px solid #1B5E20; /* Borde verde */
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Efecto al pasar el mouse por encima en PC */
+.btn-correo:hover {
+    background-color: #1B5E20; /* Se invierten los colores */
+    color: #ffffff !important;
+}
+
+/* Ajuste automático para pantallas de celulares */
+@media screen and (max-width: 768px) {
+    .btn-correo {
+        display: block;
+        width: 85%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
    </style>
 </head>
@@ -324,7 +358,11 @@
     📞 Hívás most: (06 1) 781 0538
 </a>
 
-            <p style="margin: 5px 0; display: flex; justify-content: space-between;"><strong>Szombat:</strong> <span>12:00 - 22:00</span></p>
+            <!-- Botón de correo electrónico directo -->
+<a href="mailto:info@basilicopizzeria.hu" class="btn-correo">
+    ✉️ Email küldése (Enviar Correo)
+</a>
+
             <p style="margin: 5px 0; display: flex; justify-content: space-between;"><strong>Vasárnap:</strong> <span>12:00 - 22:00</span></p>
             <small style="color: #2E7D32; display: block; text-align: center; margin-top: 10px; font-weight: bold;">Rendelésfelvétel: 20:30-ig</small>
         </div>
