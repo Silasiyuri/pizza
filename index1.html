@@ -128,56 +128,62 @@
         .dropdown-content a:hover { background-color: #f1f1f1; color: #2E7D32 !important; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* 📱 RESPONSIVE: CELULARES */
+       /* 💻 CONFIGURACIÓN PARA COMPUTADORAS (Pantallas grandes) */
+.features { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: wrap !important;        /* Permite que si no caben, bajen a la siguiente fila */
+    justify-content: center !important; 
+    gap: 40px !important;              /* Separación elegante entre las pizzas */
+    margin-top: 40px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.feature-item { 
+    width: 350px !important;           /* Tamaño ideal para computadoras */
+    height: auto !important;           /* Altura flexible para que no se corte el texto h3 o p */
+    min-height: 420px !important;      /* Mantiene todas las tarjetas con un piso visual idéntico */
+    flex: none !important; 
+    display: flex !important; 
+    flex-direction: column !important; 
+    justify-content: space-between !important; /* Distribuye el botón abajo y los textos arriba uniformes */
+    align-items: center !important; 
+    padding: 25px !important; 
+    background: #f9f9f9; 
+    border-radius: 18px; 
+    box-sizing: border-box; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06); 
+}
+
+/* Estilos de apoyo para tus imágenes */
+.pizza-img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+
+/* 📱 CONFIGURACIÓN PARA CELULARES (Dentro de tu @media screen and (max-width: 768px)) */
 @media screen and (max-width: 768px) {
-    .nav-menu { 
-        display: none !important; /* Añadido !important para ganarle al de arriba */
-        flex-direction: column !important; 
-        width: 100%; 
-        position: absolute; 
-        top: 58px; 
-        left: 0; 
-        background-color: #1B5E20; 
-        z-index: 99; 
-    }
-    
-    /* Esta es la clase que se activará al tocar las tres líneas */
-    .nav-menu.responsive { 
-        display: flex !important; 
+    .features { 
+        flex-direction: column !important; /* Fuerza una sola fila vertical */
+        align-items: center !important;    /* Centra la hilera en la pantalla */
+        gap: 30px !important;              /* Espacio cómodo entre pizza y pizza */
     }
 
-    .nav-menu li { text-align: center; width: 100%; }
-    .icon-menu { display: block; } /* Muestra las tres líneas */
-    
-    /* El resto de tus estilos del responsive se quedan exactamente igual abajo... */
-    .hero h1 { font-size: 32px; }
-    .features { flex-direction: column !important; align-items: center !important; gap: 25px !important; }
-    .feature-item { width: 90% !important; height: auto !important; aspect-ratio: 1 / 1 !important; padding: 25px !important; }
-    .contact-grid { flex-direction: column; gap: 20px; }
-    .dropdown-content { position: relative; box-shadow: none; background-color: #2E7D32; width: 100%; }
-    .dropdown-content a { color: #ffffff !important; text-align: center; padding: 10px 0; }
-}
-     .hero {
-    padding: 100px 0; 
-    text-align: center;
-    
-    /* CORRECCIÓN: Ruta directa sin el punto inicial */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/mis-autos/images/Vas.jpg.jpg');
-    
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #ffffff !important;
+    .feature-item { 
+        width: 90% !important;             /* Se estira ocupando casi toda la pantalla del cel */
+        max-width: 360px !important;       /* Evita que se deforme en pantallas de celulares grandes */
+        height: auto !important;           /* Quita el límite cuadrado para que quepa todo el texto */
+        aspect-ratio: auto !important;     /* Rompe la propiedad cuadrada vieja */
+        padding: 20px !important;          /* Margen interior adaptado al celular */
+    }
 }
 
-.hero h1 {
-    color: #ffffff !important;
-    margin-bottom: 15px;
-}
-
-.hero p {
-    color: #eeeeee !important;
-}
 
     </style>
 </head>
