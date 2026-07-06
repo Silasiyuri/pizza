@@ -147,7 +147,7 @@
     font-weight: bold;
 }
 
-/* 💻 ESTILOS PARA COMPUTADORAS (Se ve normal en línea) */
+/* 💻 VISTA PARA COMPUTADORAS (Pantallas grandes) */
 .icon-menu { 
     display: none !important; /* Esconde las tres líneas en PC */
 }
@@ -159,45 +159,53 @@
     flex-direction: row !important; 
     align-items: center !important; 
 }
+.nav-menu li { display: inline-block; }
+.nav-menu li a { display: block; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; white-space: nowrap; }
 
-/* 📱 ESTILOS PARA CELULARES (Pantallas menores a 768px) */
+/* 📱 VISTA PARA CELULARES */
 @media screen and (max-width: 768px) {
     .icon-menu { 
-        display: block !important; /* Muestra las tres líneas solo en celular */
+        display: block !important; /* Muestra las tres líneas en el celular */
     }
 
-    .nav-menu { 
-        display: none !important; /* ESCONDE las palabras dentro de las tres líneas por defecto */
+    #myNavMenu.nav-menu { 
+        display: none !important; /* ESCONDE las palabras por defecto en el celular */
         flex-direction: column !important; 
         width: 100% !important; 
         position: absolute !important; 
-        top: 60px !important; /* Se posiciona justo debajo de tu barra verde */
+        top: 100% !important; /* Se abre justo debajo de la barra verde */
         left: 0 !important; 
         background-color: #1B5E20 !important; 
-        z-index: 999999 !important; /* Capa por encima de toda la web */
-        padding: 10px 0 !important;
+        z-index: 999999 !important; /* Se dibuja por encima de todo el contenido */
+        padding: 15px 0 !important;
         margin: 0 !important;
     }
     
-    /* 🌟 ESTA REGLA MUESTRA EL MENÚ CUANDO DA CLIC CON EL DEDO */
-    .nav-menu.responsive { 
+    /* Esta clase se activa con el clic del dedo */
+    #myNavMenu.nav-menu.responsive { 
         display: flex !important; 
     }
 
-    .nav-menu li { 
+    #myNavMenu.nav-menu li { 
         text-align: center !important; 
         width: 100% !important; 
         display: block !important;
     }
-    .nav-menu li a { 
+    #myNavMenu.nav-menu li a { 
         display: block !important;
         padding: 15px 0 !important; 
         color: white !important;
+        font-size: 18px !important;
     }
     .dropdown-content {
         position: relative !important;
         background-color: #2E7D32 !important;
         width: 100% !important;
+        box-shadow: none !important;
+    }
+    .dropdown-content a {
+        color: white !important;
+        text-align: center !important;
     }
 }
 
@@ -418,6 +426,16 @@
         menu.classList.toggle("responsive");
     }
 </script>
+    <script>
+    function toggleMenu() {
+        // Buscamos el menú usando el ID correcto actualizado
+        const menu = document.getElementById("myNavMenu");
+        if (menu) {
+            menu.classList.toggle("responsive");
+        }
+    }
+</script>
+
 
 </body>
 </html>
